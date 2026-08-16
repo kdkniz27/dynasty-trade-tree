@@ -17,7 +17,11 @@ data/generate_data.py   -->  web/public/data/trades.json  -->  React frontend (w
 
 - **`data/generate_data.py`** is your old `dynasty_trade_tree.py`, refactored to fetch
   everything from Sleeper (league history, rosters, trades, drafts, players) and build a
-  fully name-resolved tree for *every* trade in one pass, writing it all to a single JSON file.
+  fully name-resolved tree for *every* trade in one pass. It writes a small
+  `web/public/data/trades.json` index (for the sidebar list) plus one JSON file per trade
+  in `web/public/data/trees/<trade_id>.json` — split into many small files instead of one
+  giant one, both because GitHub rejects any single pushed file over 100 MB and because
+  the frontend then only downloads the one tree you're actually looking at.
 - **`.github/workflows/refresh-data.yml`** runs that script on a daily schedule (free, via
   GitHub Actions) and commits the updated JSON automatically. You can also trigger it
   manually any time from the Actions tab.

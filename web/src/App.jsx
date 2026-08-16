@@ -1,8 +1,12 @@
-import React, { useEffect, useState, useCallback } from 'react'
+import React, { useEffect, useState, useCallback, useRef } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import TreeView from './components/TreeView.jsx'
 
-const DATA_URL = `${import.meta.env.BASE_URL}data/trades.json`
+// Trees are fetched one at a time (not bundled into the index) so the
+// site only downloads the tree you're actually viewing, and no single
+// file gets anywhere near GitHub's 100 MB per-file push limit.
+const INDEX_URL = `${import.meta.env.BASE_URL}data/trades.json`
+const treeUrl = (tradeId) => `${import.meta.env.BASE_URL}data/trees/${tradeId}.json`
 
 function tradeIdFromHash() {
   const hash = window.location.hash.replace('#', '')
@@ -10,19 +14,22 @@ function tradeIdFromHash() {
 }
 
 export default function App() {
-  const [data, setData] = useState(null)
-  const [error, setError] = useState(null)
+  const [index, setIndex] = useState(null)
+  const [indexError, setIndexError] = useState(null)
   const [search, setSearch] = useState('')
   const [activeTradeId, setActiveTradeId] = useState(tradeIdFromHash)
+  const [activeTree, setActiveTree] = useState(null)
+  const [treeError, setTreeError] = useState(null)
+  const treeCache = useRef(new Map())
 
   useEffect(() => {
-    fetch(DATA_URL)
+    fetch(INDEX_URL)
       .then((res) => {
-        if (!res.ok) throw new Error(`Failed to load trade data (${res.status})`)
+        if (!res.ok) throw new Error(`Failed to load trade list (${res.status})`)
         return res.json()
       })
-      .then(setData)
-      .catch((err) => setError(err.message))
+      .then(setIndex)
+      .catch((err) => setIndexError(err.message))
   }, [])
 
   // Keep the URL hash and selection in sync, so a specific tree is
@@ -38,36 +45,58 @@ export default function App() {
     return () => window.removeEventListener('hashchange', onHashChange)
   }, [])
 
-  if (error) {
+  useEffect(() => {
+    if (!activeTradeId) {
+      setActiveTree(null)
+      return
+    }
+
+    const cached = treeCache.current.get(activeTradeId)
+    if (cached) {
+      setActiveTree(cached)
+      return
+    }
+
+    setTreeError(null)
+    setActiveTree(null)
+    fetch(treeUrl(activeTradeId))
+      .then((res) => {
+        if (!res.ok) throw new Error(`Failed to load this trade (${res.status})`)
+        return res.json()
+      })
+      .then((tree) => {
+        treeCache.current.set(activeTradeId, tree)
+        setActiveTree(tree)
+      })
+      .catch((err) => setTreeError(err.message))
+  }, [activeTradeId])
+
+  if (indexError) {
     return (
       <div id="app-error">
-        Couldn't load trade data: {error}
+        Couldn't load trade data: {indexError}
         <br />
         If you just set this up, make sure the data generator has run at least once.
       </div>
     )
   }
 
-  if (!data) {
+  if (!index) {
     return <div id="app-loading">Loading trade history…</div>
   }
-
-  const activeTree = activeTradeId ? data.trees[activeTradeId] : null
 
   return (
     <div id="layout">
       <Sidebar
-        trades={data.trades}
+        trades={index.trades}
         activeTradeId={activeTradeId}
         onSelect={selectTrade}
         search={search}
         setSearch={setSearch}
-        meta={{ tradeCount: data.trades.length, generatedAt: data.generated_at }}
+        meta={{ tradeCount: index.trades.length, generatedAt: index.generated_at }}
       />
       <div id="main">
-        {activeTree ? (
-          <TreeView tree={activeTree} />
-        ) : (
+        {!activeTradeId && (
           <div id="placeholder">
             <div id="placeholder-title">Select a trade on the left</div>
             <div id="placeholder-sub">
@@ -76,6 +105,18 @@ export default function App() {
             </div>
           </div>
         )}
+        {activeTradeId && treeError && (
+          <div id="placeholder">
+            <div id="placeholder-title">Couldn't load this trade</div>
+            <div id="placeholder-sub">{treeError}</div>
+          </div>
+        )}
+        {activeTradeId && !treeError && !activeTree && (
+          <div id="placeholder">
+            <div id="placeholder-title">Loading tree…</div>
+          </div>
+        )}
+        {activeTradeId && activeTree && <TreeView tree={activeTree} />}
       </div>
     </div>
   )

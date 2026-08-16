@@ -19,16 +19,26 @@ without you doing anything.
 
 OUTPUT
 ------
-web/public/data/trades.json, shaped like:
+web/public/data/trades.json - a lightweight index for the sidebar:
 {
   "generated_at": "2026-08-16T12:00:00Z",
   "league_id": "1312658766117744640",
-  "trades": [ {trade_id, date, season, summary}, ... ]   # sidebar list
-  "trees":  { "<trade_id>": { ...fully name-resolved tree... }, ... }
+  "trades": [ {trade_id, date, season, summary, teams}, ... ]
 }
 
+web/public/data/trees/<trade_id>.json - one file per trade, the full
+name-resolved tree for that trade, fetched lazily by the frontend only
+when that trade is selected:
+{ "trade_id": ..., "date": ..., "assets": [ ...fully resolved... ] }
+
+Each trade gets its own file (instead of one giant combined file)
+for two reasons: GitHub rejects any single pushed file over 100 MB,
+and a dynasty league's trade trees overlap heavily, so one combined
+file balloons fast. Per-trade files also mean the site only downloads
+the one tree you're actually looking at.
+
 Every name (players, teams, picks) is already resolved to plain
-strings in this file - the frontend never needs players.json or any
+strings in these files - the frontend never needs players.json or any
 Sleeper call at runtime.
 """
 
@@ -43,10 +53,13 @@ import requests
 # ---------------------------------------------------------------------------
 
 CURRENT_LEAGUE_ID = os.environ.get("SLEEPER_LEAGUE_ID") or "1312658766117744640"
-OUTPUT_PATH = os.environ.get(
-    "OUTPUT_PATH",
-    os.path.join(os.path.dirname(__file__), "..", "web", "public", "data", "trades.json"),
+
+DATA_DIR = os.environ.get(
+    "DATA_DIR",
+    os.path.join(os.path.dirname(__file__), "..", "web", "public", "data"),
 )
+INDEX_PATH = os.path.join(DATA_DIR, "trades.json")
+TREES_DIR = os.path.join(DATA_DIR, "trees")
 
 
 # ---------------------------------------------------------------------------
@@ -677,9 +690,18 @@ def main():
     trade_ledger = build_trade_ledger(all_trades)
     asset_history = build_asset_history(trade_ledger)
 
-    print("Building + resolving a tree for every trade...")
+    print("Building + resolving a tree for every trade, one file each...")
+    os.makedirs(TREES_DIR, exist_ok=True)
+
+    # Wipe stale per-trade files from previous runs (e.g. a trade that
+    # no longer exists) so the trees/ folder never accumulates orphans.
+    for existing in os.listdir(TREES_DIR):
+        if existing.endswith(".json"):
+            os.remove(os.path.join(TREES_DIR, existing))
+
     trade_summaries = []
-    trees_by_id = {}
+    total_bytes = 0
+    biggest = (None, 0)
 
     for trade in all_trades:
         trade_id = trade["transaction_id"]
@@ -708,25 +730,38 @@ def main():
         )
 
         tree = build_trade_tree(trade_id, all_trades, asset_history, draft_pick_selections)
-        trees_by_id[trade_id] = resolve_trade_tree_for_display(
+        resolved = resolve_trade_tree_for_display(
             tree, players, team_names, season_to_league_id
         )
 
+        tree_path = os.path.join(TREES_DIR, f"{trade_id}.json")
+        with open(tree_path, "w") as f:
+            json.dump(resolved, f, separators=(",", ":"))  # no indent - keeps files small
+
+        file_size = os.path.getsize(tree_path)
+        total_bytes += file_size
+        if file_size > biggest[1]:
+            biggest = (trade_id, file_size)
+
     trade_summaries.sort(key=lambda t: t["date"], reverse=True)
 
-    output = {
+    index = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "league_id": CURRENT_LEAGUE_ID,
         "trades": trade_summaries,
-        "trees": trees_by_id,
     }
 
-    os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
-    with open(OUTPUT_PATH, "w") as f:
-        json.dump(output, f, indent=2)
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(INDEX_PATH, "w") as f:
+        json.dump(index, f, indent=2)
 
-    size_mb = os.path.getsize(OUTPUT_PATH) / (1024 * 1024)
-    print(f"\nWrote {OUTPUT_PATH} ({size_mb:.2f} MB, {len(all_trades)} trades)")
+    print(f"\nWrote {INDEX_PATH} ({len(all_trades)} trades)")
+    print(
+        f"Wrote {len(all_trades)} tree file(s) to {TREES_DIR} "
+        f"({total_bytes / (1024 * 1024):.2f} MB total)"
+    )
+    if biggest[0]:
+        print(f"Largest single tree: {biggest[0]} ({biggest[1] / (1024 * 1024):.2f} MB)")
 
 
 if __name__ == "__main__":
