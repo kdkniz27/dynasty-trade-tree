@@ -1,0 +1,1382 @@
+{
+  "generated_at": "2026-08-16T20:50:24.481278+00:00",
+  "league_id": "1312658766117744640",
+  "league_name": "THE Berg Dynasty League ",
+  "trades": [
+    {
+      "trade_id": "1390093504331399168",
+      "date": "2026-08-03",
+      "season": "2026",
+      "summary": "Bucky Irving, Jaylen Waddle, 2027 Round 4 (Big Richards)",
+      "teams": [
+        "Big Richards",
+        "Chase \u2018n Chubby Boutte"
+      ]
+    },
+    {
+      "trade_id": "1388235165544775680",
+      "date": "2026-07-29",
+      "season": "2026",
+      "summary": "Brian Thomas, Kyle Monangai, Drake London, Christian Watson, 2027 Round 1 (Chase \u2018n Chubby Boutte), 2027 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2027 Round 2 (Daniel Jones), 2029 Round 2 (Daniel Jones)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Chase \u2018n Chubby Boutte",
+        "Daniel Jones"
+      ]
+    },
+    {
+      "trade_id": "1387256771285901312",
+      "date": "2026-07-26",
+      "season": "2026",
+      "summary": "2026 Round 4 (Chase \u2018n Chubby Boutte), 2026 Round 4 (BO Wetzel)",
+      "teams": [
+        "BO Wetzel",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1387255599951011840",
+      "date": "2026-07-26",
+      "season": "2026",
+      "summary": "Ricky Pearsall, RJ Harvey, 2028 Round 3 (Chase \u2018n Chubby Boutte), 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2027 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Chase \u2018n Chubby Boutte"
+      ]
+    },
+    {
+      "trade_id": "1349145103289032704",
+      "date": "2026-04-12",
+      "season": "2026",
+      "summary": "Davante Adams, 2026 Round 1 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Ground Zero"
+      ]
+    },
+    {
+      "trade_id": "1340063040250351616",
+      "date": "2026-03-18",
+      "season": "2026",
+      "summary": "Mike Evans, 2027 Round 4 (Ground Zero), 2026 Round 2 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe)",
+      "teams": [
+        "Chase \u2018n Chubby Boutte",
+        "Ground Zero"
+      ]
+    },
+    {
+      "trade_id": "1303607055310925824",
+      "date": "2025-12-08",
+      "season": "2025",
+      "summary": "2027 Round 3 (Daniel Jones), 2027 Round 2 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe)",
+      "teams": [
+        "Daniel Jones",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1294162292849545216",
+      "date": "2025-11-12",
+      "season": "2025",
+      "summary": "Woody Marks, DK Metcalf, Josh Jacobs, 2026 Round 2 (Revenge Tour)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1294101850663960576",
+      "date": "2025-11-11",
+      "season": "2025",
+      "summary": "Brian Thomas, Daniel Jones, Puka Nacua, 2026 Round 1 (BO Wetzel), 2027 Round 3 (Daniel Jones), 2027 Round 2 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe), 2026 Round 1 (Chungus3)",
+      "teams": [
+        "Daniel Jones",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1289434124624338944",
+      "date": "2025-10-30",
+      "season": "2025",
+      "summary": "Matthew Stafford, Justin Herbert, 2027 Round 1 (Chase \u2018n Chubby Boutte), 2028 Round 2 (Chase \u2018n Chubby Boutte), 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2026 Round 1 (Revenge Tour)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Ground Zero"
+      ]
+    },
+    {
+      "trade_id": "1286379967533289472",
+      "date": "2025-10-21",
+      "season": "2025",
+      "summary": "",
+      "teams": [
+        "Jaxon Jaxson Jackoffs",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1286378459802664960",
+      "date": "2025-10-21",
+      "season": "2025",
+      "summary": "TreVeyon Henderson, Baker Mayfield, Chris Olave, Jahmyr Gibbs, 2026 Round 2 (Jaxon Jaxson Jackoffs)",
+      "teams": [
+        "Jaxon Jaxson Jackoffs",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1285619788202139648",
+      "date": "2025-10-19",
+      "season": "2025",
+      "summary": "TreVeyon Henderson, Baker Mayfield, Chris Olave, Jahmyr Gibbs, 2026 Round 2 (Jaxon Jaxson Jackoffs)",
+      "teams": [
+        "Jaxon Jaxson Jackoffs",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1228491760812949504",
+      "date": "2025-05-14",
+      "season": "2025",
+      "summary": "Mike Evans, Diontae Johnson, John Metchie, 2028 Round 2 (Ground Zero)",
+      "teams": [
+        "Chungus3",
+        "Ground Zero"
+      ]
+    },
+    {
+      "trade_id": "1228059627426430976",
+      "date": "2025-05-13",
+      "season": "2025",
+      "summary": "Josh Jacobs, 2026 Round 1 (Ground Zero), 2026 Round 3 (Daniel Jones)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Daniel Jones"
+      ]
+    },
+    {
+      "trade_id": "1227502145113182208",
+      "date": "2025-05-12",
+      "season": "2025",
+      "summary": "Chig Okonkwo, 2028 Round 2 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Chase \u2018n Chubby Boutte",
+        "Ground Zero"
+      ]
+    },
+    {
+      "trade_id": "1226581491908087808",
+      "date": "2025-05-09",
+      "season": "2025",
+      "summary": "Zach Ertz",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Chase \u2018n Chubby Boutte"
+      ]
+    },
+    {
+      "trade_id": "1222997929397080064",
+      "date": "2025-04-29",
+      "season": "2025",
+      "summary": "2025 Round 4 (Chase \u2018n Chubby Boutte), 2025 Round 4 (NIX Sevennn), 2026 Round 3 (BO Wetzel)",
+      "teams": [
+        "Huge Sacks",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1222679784094433280",
+      "date": "2025-04-28",
+      "season": "2025",
+      "summary": "2025 Round 2 (NIX Sevennn), 2025 Round 3 (Ground Zero), 2026 Round 2 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe)",
+      "teams": [
+        "Chase \u2018n Chubby Boutte",
+        "Ground Zero"
+      ]
+    },
+    {
+      "trade_id": "1222424140170940416",
+      "date": "2025-04-28",
+      "season": "2025",
+      "summary": "Keon Coleman, Tank Dell, 2025 Round 2 (NIX Sevennn), 2025 Round 3 (NIX Sevennn), 2026 Round 2 (BO Wetzel), 2027 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2025 Round 2 (Revenge Tour)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Chase \u2018n Chubby Boutte"
+      ]
+    },
+    {
+      "trade_id": "1222343528831537152",
+      "date": "2025-04-27",
+      "season": "2025",
+      "summary": "Cade Otton, 2025 Round 3 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2027 Round 2 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe), 2025 Round 1 (Chungus3)",
+      "teams": [
+        "LamarLamerrier\ud83d\udca8",
+        "NIX Sevennn"
+      ]
+    },
+    {
+      "trade_id": "1222334023351668736",
+      "date": "2025-04-27",
+      "season": "2025",
+      "summary": "Jared Goff, Matthew Stafford, Jerry Jeudy, 2027 Round 2 (Ground Zero), 2025 Round 1 (LamarLamerrier\ud83d\udca8), 2026 Round 2 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe), 2025 Round 1 (Chungus3)",
+      "teams": [
+        "Ground Zero",
+        "LamarLamerrier\ud83d\udca8"
+      ]
+    },
+    {
+      "trade_id": "1220188700504244225",
+      "date": "2025-04-21",
+      "season": "2025",
+      "summary": "George Kittle, 2025 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Chase \u2018n Chubby Boutte"
+      ]
+    },
+    {
+      "trade_id": "1215171955687161856",
+      "date": "2025-04-08",
+      "season": "2025",
+      "summary": "Joe Milton, 2025 Round 3 (NIX Sevennn)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "Chase \u2018n Chubby Boutte"
+      ]
+    },
+    {
+      "trade_id": "1167625458964398080",
+      "date": "2024-11-27",
+      "season": "2024",
+      "summary": "Courtland Sutton, Quentin Johnston, 2025 Round 2 (NIX Sevennn), 2025 Round 3 (NIX Sevennn), 2025 Round 3 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2025 Round 2 (Daniel Jones)",
+      "teams": [
+        "Waiting For 2026 \ud83e\udd21 ",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1165358710844383232",
+      "date": "2024-11-21",
+      "season": "2024",
+      "summary": "Braelon Allen, Jonathan Taylor, 2025 Round 1 (NIX Sevennn), 2026 Round 2 (BO Wetzel)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1160850278846017536",
+      "date": "2024-11-09",
+      "season": "2024",
+      "summary": "Troy Franklin, Kimani Vidal, Raheem Mostert, Dak Prescott",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1158882795646939136",
+      "date": "2024-11-03",
+      "season": "2024",
+      "summary": "Adrian Peterson",
+      "teams": [
+        "Waiting For 2026 \ud83e\udd21 ",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1158869945020493824",
+      "date": "2024-11-03",
+      "season": "2024",
+      "summary": "Adrian Peterson",
+      "teams": [
+        "Waiting For 2026 \ud83e\udd21 ",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1156497618793705472",
+      "date": "2024-10-28",
+      "season": "2024",
+      "summary": "Xavier Legette, Jonathan Taylor, Josh Downs, Kendre Miller, 2026 Round 1 (Ground Zero), 2025 Round 2 (Daniel Jones)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1156442577140207616",
+      "date": "2024-10-28",
+      "season": "2024",
+      "summary": "Ben Sinnott, Rome Odunze, Davante Adams, Raheem Mostert, Pat Freiermuth, Breece Hall, 2026 Round 1 (Ground Zero), 2025 Round 2 (Daniel Jones)",
+      "teams": [
+        "Ground Zero",
+        "Her Boutte Bi On My \u2018Jan"
+      ]
+    },
+    {
+      "trade_id": "1156065394021576704",
+      "date": "2024-10-27",
+      "season": "2024",
+      "summary": "Treylon Burks",
+      "teams": [
+        "Chungus3",
+        "Her Boutte Bi On My \u2018Jan"
+      ]
+    },
+    {
+      "trade_id": "1154847715025694720",
+      "date": "2024-10-23",
+      "season": "2024",
+      "summary": "Russell Wilson, 2025 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2025 Round 1 (Revenge Tour)",
+      "teams": [
+        "Ground Zero",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1152311373817384960",
+      "date": "2024-10-16",
+      "season": "2024",
+      "summary": "Treylon Burks",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Your Champion and Hero"
+      ]
+    },
+    {
+      "trade_id": "1146957588072968192",
+      "date": "2024-10-01",
+      "season": "2024",
+      "summary": "Davante Adams, DeMario Douglas, 2025 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2027 Round 2 (Daniel Jones)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1146909448942923776",
+      "date": "2024-10-01",
+      "season": "2024",
+      "summary": "Cordarrelle Patterson, George Kittle, Dallas Goedert, 2027 Round 4 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1144810295379111936",
+      "date": "2024-09-25",
+      "season": "2024",
+      "summary": "Jermaine Burton, Isaac Guerendo, Christian McCaffrey, Dallas Goedert, Jonathan Taylor, Tucker Kraft, 2027 Round 3 (Chase \u2018n Chubby Boutte), 2025 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1144129586328576000",
+      "date": "2024-09-24",
+      "season": "2024",
+      "summary": "Devin Singletary, 2026 Round 1 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Ground Zero",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1144314348605702144",
+      "date": "2024-09-24",
+      "season": "2024",
+      "summary": "Justin Herbert, Jalen Hurts, 2025 Round 2 (Revenge Tour), 2026 Round 1 (Revenge Tour)",
+      "teams": [
+        "Waiting For 2026 \ud83e\udd21 ",
+        "Your Champion and Hero"
+      ]
+    },
+    {
+      "trade_id": "1141623269600530432",
+      "date": "2024-09-17",
+      "season": "2024",
+      "summary": "Noah Fant, Pat Freiermuth, 2027 Round 2 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1141612434466713600",
+      "date": "2024-09-17",
+      "season": "2024",
+      "summary": "Malik Willis",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Michael\u2019s Jr. Penix\u2019s"
+      ]
+    },
+    {
+      "trade_id": "1141605571767640064",
+      "date": "2024-09-17",
+      "season": "2024",
+      "summary": "Josh Jacobs, Diontae Johnson, Jaylen Waddle, Brock Purdy, Bryce Young, 2027 Round 1 (Chase \u2018n Chubby Boutte), 2025 Round 1 (Revenge Tour)",
+      "teams": [
+        "Ground Zero",
+        "Her Boutte Bi On My \u2018Jan"
+      ]
+    },
+    {
+      "trade_id": "1141813538378481664",
+      "date": "2024-09-17",
+      "season": "2024",
+      "summary": "Keon Coleman, Josh Jacobs, Drake London, Breece Hall, Puka Nacua, 2027 Round 2 (Daniel Jones)",
+      "teams": [
+        "Andy Dalton",
+        "Her Boutte Bi On My \u2018Jan"
+      ]
+    },
+    {
+      "trade_id": "1140160460684562432",
+      "date": "2024-09-13",
+      "season": "2024",
+      "summary": "Cade Otton, Jahan Dotson, Jahmyr Gibbs, Tank Dell, 2025 Round 1 (Revenge Tour)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1140052847762169856",
+      "date": "2024-09-12",
+      "season": "2024",
+      "summary": "DK Metcalf, Chase Brown, Josh Downs, 2026 Round 2 (Chase \u2018n Chubby Boutte), 2025 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2025 Round 3 (Revenge Tour)",
+      "teams": [
+        "Waiting For 2026 \ud83e\udd21 ",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1092895366804094976",
+      "date": "2024-05-05",
+      "season": "2024",
+      "summary": "2024 Round 3 (Jaxon Jackoffs), 2024 Round 2 (Huge Sacks), 2024 Round 2 (Little Richards)",
+      "teams": [
+        "Andy Dalton",
+        "Her Boutte Bi On My \u2018Jan"
+      ]
+    },
+    {
+      "trade_id": "1092892220199436288",
+      "date": "2024-05-05",
+      "season": "2024",
+      "summary": "2024 Round 2 (Jaxon Jackoffs), 2024 Round 2 (Andy Dalton)",
+      "teams": [
+        "Andy Dalton",
+        "Michael\u2019s Jr. Penix\u2019s"
+      ]
+    },
+    {
+      "trade_id": "1092889804678770688",
+      "date": "2024-05-05",
+      "season": "2024",
+      "summary": "2024 Round 2 (Michael\u2019s Jr. Penix\u2019s), 2025 Round 1 (Michael\u2019s Jr. Penix\u2019s), 2024 Round 2 (Andy Dalton)",
+      "teams": [
+        "Michael\u2019s Jr. Penix\u2019s",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1092885857582919680",
+      "date": "2024-05-05",
+      "season": "2024",
+      "summary": "Marquise Brown, 2024 Round 4 (Her Boutte Bi On My \u2018Jan), 2024 Round 3 (Huge Sacks), 2024 Round 2 (Your Champion and Hero)",
+      "teams": [
+        "Huge Sacks",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1092884408849358848",
+      "date": "2024-05-05",
+      "season": "2024",
+      "summary": "Tee Higgins, J.K. Dobbins, 2024 Round 2 (Huge Sacks), 2024 Round 2 (YEAH BO), 2024 Round 4 (Andy Dalton), 2024 Round 2 (Your Champion and Hero)",
+      "teams": [
+        "Andy Dalton",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1092604004972060672",
+      "date": "2024-05-04",
+      "season": "2024",
+      "summary": "Amari Cooper, 2024 Round 2 (Jaxon Jackoffs), 2024 Round 2 (MakeThePlayoffsPls)",
+      "teams": [
+        "Andy Dalton",
+        "Jaxon Jackoffs"
+      ]
+    },
+    {
+      "trade_id": "1091035512351141888",
+      "date": "2024-04-30",
+      "season": "2024",
+      "summary": "DeMario Douglas, 2024 Round 3 (YEAH BO)",
+      "teams": [
+        "Ground Zero",
+        "Her Boutte Bi On My \u2018Jan"
+      ]
+    },
+    {
+      "trade_id": "1090067488097771520",
+      "date": "2024-04-27",
+      "season": "2024",
+      "summary": "Keaton Mitchell, 2024 Round 3 (Waiting For 2026 \ud83e\udd21 ), 2024 Round 4 (Your Champion and Hero)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1089966914505453568",
+      "date": "2024-04-27",
+      "season": "2024",
+      "summary": "Joe Burrow, Michael Mayer, 2024 Round 1 (YEAH BO), 2024 Round 3 (YEAH BO), 2024 Round 1 (Waiting For 2026 \ud83e\udd21 )",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1088860969368903680",
+      "date": "2024-04-24",
+      "season": "2024",
+      "summary": "Deebo Samuel, 2024 Round 1 (Huge Sacks)",
+      "teams": [
+        "Ground Zero",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1088219767283986432",
+      "date": "2024-04-22",
+      "season": "2024",
+      "summary": "2024 Round 2 (Ground Zero), 2024 Round 2 (Waiting For 2026 \ud83e\udd21 ), 2024 Round 2 (Andy Dalton)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1075193723618816000",
+      "date": "2024-03-17",
+      "season": "2024",
+      "summary": "Wan'Dale Robinson, Chase Brown, 2024 Round 2 (Little Richards)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1074378976480669696",
+      "date": "2024-03-15",
+      "season": "2024",
+      "summary": "Marquise Brown, Diontae Johnson",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "YEAH BO"
+      ]
+    },
+    {
+      "trade_id": "1073647630334418944",
+      "date": "2024-03-13",
+      "season": "2024",
+      "summary": "George Kittle, Zay Flowers, 2024 Round 1 (Waiting For 2026 \ud83e\udd21 ), 2024 Round 4 (Michael\u2019s Jr. Penix\u2019s), 2024 Round 2 (Andy Dalton)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1061872932353384448",
+      "date": "2024-02-10",
+      "season": "2024",
+      "summary": "Jameson Williams, Dontayvion Wicks, 2024 Round 4 (Michael\u2019s Jr. Penix\u2019s)",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Michael\u2019s Jr. Penix\u2019s"
+      ]
+    },
+    {
+      "trade_id": "1052094633011994624",
+      "date": "2024-01-14",
+      "season": "2024",
+      "summary": "Drake London, Alec Pierce, Kenneth Walker, 2025 Round 4 (Chase \u2018n Chubby Boutte), 2026 Round 4 (Chase \u2018n Chubby Boutte), 2024 Round 4 (Waiting For 2026 \ud83e\udd21 )",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1052089470696222720",
+      "date": "2024-01-14",
+      "season": "2024",
+      "summary": "Brandin Cooks, Marquise Brown, Kadarius Toney",
+      "teams": [
+        "Her Boutte Bi On My \u2018Jan",
+        "Waiting For 2026 \ud83e\udd21 "
+      ]
+    },
+    {
+      "trade_id": "1031005879254081536",
+      "date": "2023-11-16",
+      "season": "2023",
+      "summary": "Matthew Stafford, 2026 Round 3 (Ground Zero), 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Revenge tour",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "1030565749540110336",
+      "date": "2023-11-15",
+      "season": "2023",
+      "summary": "Josh Allen, Trevor Lawrence, DeVonta Smith, Amon-Ra St. Brown, 2025 Round 2 (Ground Zero), 2026 Round 2 (Ground Zero), 2024 Round 1 (Waiting For 2026 \ud83e\udd21 ), 2025 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1027699459578351616",
+      "date": "2023-11-07",
+      "season": "2023",
+      "summary": "Will Levis, 2025 Round 1 (Ground Zero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "1026311485825331200",
+      "date": "2023-11-03",
+      "season": "2023",
+      "summary": "Sam LaPorta, Davante Adams, Tyler Lockett, Dallas Goedert, 2024 Round 2 (Little Richards)",
+      "teams": [
+        "Christian Mingle",
+        "Little Richards"
+      ]
+    },
+    {
+      "trade_id": "1026032212233490432",
+      "date": "2023-11-03",
+      "season": "2023",
+      "summary": "Sam Darnold, Brock Purdy, Josh Downs, 2025 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1020149256709160960",
+      "date": "2023-10-17",
+      "season": "2023",
+      "summary": "Stefon Diggs, DK Metcalf, 2024 Round 3 (Ground Zero), 2024 Round 4 (Your Champion and Hero)",
+      "teams": [
+        "Christian Mingle",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "1019749915624349696",
+      "date": "2023-10-16",
+      "season": "2023",
+      "summary": "Josh Allen, Jalen Hurts, 2025 Round 4 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2026 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2024 Round 2 (Andy Dalton)",
+      "teams": [
+        "Christian Mingle",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1018554107713384448",
+      "date": "2023-10-13",
+      "season": "2023",
+      "summary": "Tyler Boyd, 2025 Round 4 (Ground Zero)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1018245401402531840",
+      "date": "2023-10-12",
+      "season": "2023",
+      "summary": "Jonathan Mingo, Jahan Dotson, Chris Olave, John Metchie, Christian Watson, Tyquan Thornton, 2024 Round 1 (Her Boutte Bi On My \u2018Jan), 2024 Round 2 (Ground Zero)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Breece\u2019s Pieces"
+      ]
+    },
+    {
+      "trade_id": "1018225132168425472",
+      "date": "2023-10-12",
+      "season": "2023",
+      "summary": "Raheem Mostert, 2024 Round 3 (Ground Zero), 2025 Round 2 (Ground Zero), 2026 Round 2 (Ground Zero), 2026 Round 4 (Ground Zero)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1015768836018147328",
+      "date": "2023-10-05",
+      "season": "2023",
+      "summary": "Jared Goff, Jeff Wilson, Tee Higgins, Cole Kmet, Khalil Herbert, 2024 Round 1 (Michael\u2019s Jr. Penix\u2019s)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1015451127812370432",
+      "date": "2023-10-05",
+      "season": "2023",
+      "summary": "DK Metcalf, Alexander Mattison, Chris Olave, Kyren Williams",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "1014283626991362048",
+      "date": "2023-10-01",
+      "season": "2023",
+      "summary": "Tee Higgins, Gabe Davis",
+      "teams": [
+        "Christian Mingle",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1012630975114764288",
+      "date": "2023-09-27",
+      "season": "2023",
+      "summary": "Zay Jones, 2025 Round 3 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "1012499623010779136",
+      "date": "2023-09-26",
+      "season": "2023",
+      "summary": "Sam LaPorta, Chris Olave, 2025 Round 3 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Christian Mingle",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "1011863901237379072",
+      "date": "2023-09-25",
+      "season": "2023",
+      "summary": "T.J. Hockenson, 2024 Round 1 (Ground Zero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1011832949949616128",
+      "date": "2023-09-25",
+      "season": "2023",
+      "summary": "Brandin Cooks, Hunter Henry, 2025 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Christian Mingle",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1011767239370219520",
+      "date": "2023-09-24",
+      "season": "2023",
+      "summary": "Michael Gallup, Michael Pittman, 2024 Round 2 (Ground Zero), 2025 Round 1 (Ground Zero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1011705742229028864",
+      "date": "2023-09-24",
+      "season": "2023",
+      "summary": "Tre Tucker, Samaje Perine, 2024 Round 4 (Her Boutte Bi On My \u2018Jan)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "1010328360683188224",
+      "date": "2023-09-20",
+      "season": "2023",
+      "summary": "Stefon Diggs, Aaron Jones, Jerry Jeudy, 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Christian Mingle",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "1010324430272200704",
+      "date": "2023-09-20",
+      "season": "2023",
+      "summary": "Jonathan Mingo, 2025 Round 2 (Daniel Jones), 2024 Round 3 (MakeThePlayoffsPls)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1009973075435216896",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "Cooper Kupp, Quentin Johnston, 2025 Round 2 (Daniel Jones), 2025 Round 3 (Revenge Tour), 2026 Round 3 (Revenge Tour)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "1009969666208407552",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "Michael Wilson, George Kittle, Michael Mayer, 2026 Round 3 (BO Wetzel)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1009966939524952064",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "James Conner, Elijah Moore, 2024 Round 3 (MakeThePlayoffsPls)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "1009965999740833792",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "Tee Higgins, Nico Collins, 2024 Round 2 (Waiting For 2026 \ud83e\udd21 ), 2025 Round 1 (Revenge Tour)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "1009964497727004672",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "Joe Burrow, Sam Howell, Jelani Woods, Trey Palmer, 2024 Round 1 (Her Boutte Bi On My \u2018Jan), 2026 Round 2 (Revenge Tour)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1009962707405086720",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "Brian Robinson, Jalin Hyatt, 2026 Round 1 (Chungus3)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Chungus3"
+      ]
+    },
+    {
+      "trade_id": "1009731071535120384",
+      "date": "2023-09-19",
+      "season": "2023",
+      "summary": "Ja'Marr Chase, Trey Palmer, 2026 Round 1 (Chase \u2018n Chubby Boutte), 2026 Round 2 (Big Richards), 2024 Round 1 (Ground Zero), 2025 Round 2 (Ground Zero), 2025 Round 1 (Chungus3)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1007800848941944832",
+      "date": "2023-09-13",
+      "season": "2023",
+      "summary": "Dalvin Cook, T.J. Hockenson, Kyle Pitts, Jahan Dotson, Garrett Wilson, Kyren Williams, Breece Hall, Jahmyr Gibbs, 2025 Round 2 (Chase \u2018n Chubby Boutte), 2024 Round 1 (Michael\u2019s Jr. Penix\u2019s), 2025 Round 1 (Chungus3)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Chungus3",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1007447625622319104",
+      "date": "2023-09-12",
+      "season": "2023",
+      "summary": "Kenneth Walker, Christian Watson, 2026 Round 2 (Chase \u2018n Chubby Boutte), 2026 Round 3 (BO Wetzel)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1007383245195001856",
+      "date": "2023-09-12",
+      "season": "2023",
+      "summary": "Michael Thomas, Joshua Dobbs, Aaron Rodgers, 2025 Round 2 (Big Richards)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Little Richards"
+      ]
+    },
+    {
+      "trade_id": "1007352531208560640",
+      "date": "2023-09-12",
+      "season": "2023",
+      "summary": "Michael Thomas, Joshua Dobbs, Aaron Rodgers, 2025 Round 2 (Big Richards)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Little Richards"
+      ]
+    },
+    {
+      "trade_id": "1006729695540563968",
+      "date": "2023-09-10",
+      "season": "2023",
+      "summary": "Jordan Addison, 2024 Round 1 (Ground Zero), 2025 Round 2 (Ground Zero)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "1005626297986424832",
+      "date": "2023-09-07",
+      "season": "2023",
+      "summary": "Trey McBride, 2026 Round 2 (Big Richards)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Little Richards"
+      ]
+    },
+    {
+      "trade_id": "1003049001865904128",
+      "date": "2023-08-31",
+      "season": "2023",
+      "summary": "DK Metcalf, Miles Sanders, Jerry Jeudy",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "1002388787332321280",
+      "date": "2023-08-29",
+      "season": "2023",
+      "summary": "Jerome Ford, Kayshon Boutte, 2024 Round 4 (Waiting For 2026 \ud83e\udd21 )",
+      "teams": [
+        "Christian Mingle",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "1001961343269908480",
+      "date": "2023-08-28",
+      "season": "2023",
+      "summary": "J.K. Dobbins, Jonathan Taylor, Desmond Ridder, 2024 Round 4 (Her Boutte Bi On My \u2018Jan)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "990528135370162176",
+      "date": "2023-07-28",
+      "season": "2023",
+      "summary": "Dak Prescott, Allen Lazard, Daniel Jones, 2024 Round 2 (Your Champion and Hero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "990495717087068160",
+      "date": "2023-07-28",
+      "season": "2023",
+      "summary": "David Montgomery, Jahmyr Gibbs, 2025 Round 1 (Chase \u2018n Chubby Boutte), 2025 Round 2 (Daniel Jones), 2024 Round 2 (MakeThePlayoffsPls)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "989720835113955328",
+      "date": "2023-07-26",
+      "season": "2023",
+      "summary": "Zach Wilson, Alec Pierce, Sam Howell, Michael Mayer, 2025 Round 1 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "988190667782393856",
+      "date": "2023-07-21",
+      "season": "2023",
+      "summary": "Jerry Jeudy, J.K. Dobbins, Cam Akers, Christian Watson, 2025 Round 2 (Chase \u2018n Chubby Boutte), 2026 Round 2 (Revenge Tour)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "987257224126881792",
+      "date": "2023-07-19",
+      "season": "2023",
+      "summary": "Rashod Bateman, 2024 Round 4 (Ground Zero), 2024 Round 2 (MakeThePlayoffsPls), 2025 Round 2 (LamarLamerrier\ud83d\udca8), 2025 Round 4 (LamarLamerrier\ud83d\udca8)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "986429256739737600",
+      "date": "2023-07-16",
+      "season": "2023",
+      "summary": "Jerry Jeudy, 2026 Round 3 (Chase \u2018n Chubby Boutte), 2024 Round 1 (Your Champion and Hero)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "983107043173232640",
+      "date": "2023-07-07",
+      "season": "2023",
+      "summary": "Amari Cooper, Dalvin Cook, DK Metcalf, Elijah Mitchell, 2024 Round 2 (Your Champion and Hero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "978827226986725376",
+      "date": "2023-06-25",
+      "season": "2023",
+      "summary": "Kyle Pitts, Elijah Mitchell, Jameson Williams, 2024 Round 1 (Your Champion and Hero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "978087180478259200",
+      "date": "2023-06-23",
+      "season": "2023",
+      "summary": "",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "978086018127577088",
+      "date": "2023-06-23",
+      "season": "2023",
+      "summary": "",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "976194271101382656",
+      "date": "2023-06-18",
+      "season": "2023",
+      "summary": "Antonio Gibson, 2024 Round 1 (Michael\u2019s Jr. Penix\u2019s), 2024 Round 1 (MakeThePlayoffsPls)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "King of Turd Mountain"
+      ]
+    },
+    {
+      "trade_id": "975640857023987712",
+      "date": "2023-06-17",
+      "season": "2023",
+      "summary": "Antonio Gibson, 2024 Round 2 (Her Boutte Bi On My \u2018Jan), 2025 Round 3 (Chase \u2018n Chubby Boutte)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "973042512954724352",
+      "date": "2023-06-09",
+      "season": "2023",
+      "summary": "Rashee Rice, Travis Kelce, Nick Chubb, Miles Sanders, J.K. Dobbins, Chris Olave, Garrett Wilson, Bijan Robinson, Jordan Addison, 2025 Round 1 (Daniel Jones), 2024 Round 1 (MakeThePlayoffsPls), 2026 Round 1 (ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe), 2024 Round 1 (Your Champion and Hero)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Christian Mingle",
+        "Her Boutte Bi on my Jan",
+        "King of Turd Mountain",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "972605761211707392",
+      "date": "2023-06-08",
+      "season": "2023",
+      "summary": "Christian Kirk, 2024 Round 1 (Her Boutte Bi On My \u2018Jan), 2024 Round 1 (Andy Dalton)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Little Richards"
+      ]
+    },
+    {
+      "trade_id": "972565992377294848",
+      "date": "2023-06-08",
+      "season": "2023",
+      "summary": "Trevor Lawrence, Desmond Ridder, 2024 Round 1 (Andy Dalton), 2025 Round 1 (Daniel Jones)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "971298147899092992",
+      "date": "2023-06-05",
+      "season": "2023",
+      "summary": "Jared Goff, Deshaun Watson, DK Metcalf, Terry McLaurin, CeeDee Lamb, Michael Pittman, Jameson Williams, Jahmyr Gibbs, Bijan Robinson, 2024 Round 1 (Waiting For 2026 \ud83e\udd21 ), 2025 Round 1 (Daniel Jones), 2026 Round 1 (Daniel Jones), 2024 Round 2 (Your Champion and Hero), 2025 Round 4 (Revenge Tour), 2026 Round 2 (Revenge Tour)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "970101510115741696",
+      "date": "2023-06-01",
+      "season": "2023",
+      "summary": "Luke Schoonmaker, Brenton Strange",
+      "teams": [
+        "Christian Mingle",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "969333958171230208",
+      "date": "2023-05-30",
+      "season": "2023",
+      "summary": "Dak Prescott, Christian McCaffrey, Mike Gesicki, Marquise Brown, Daniel Jones, David Montgomery, Christian Watson, 2024 Round 2 (Andy Dalton)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "969275911239442432",
+      "date": "2023-05-30",
+      "season": "2023",
+      "summary": "Christian Kirk, Michael Pittman",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Her Boutte Bi on my Jan"
+      ]
+    },
+    {
+      "trade_id": "967220701620981760",
+      "date": "2023-05-24",
+      "season": "2023",
+      "summary": "David Montgomery, Bijan Robinson, 2024 Round 1 (Your Champion and Hero), 2025 Round 1 (Revenge Tour)",
+      "teams": [
+        "Christian Mingle",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "965422232992317440",
+      "date": "2023-05-19",
+      "season": "2023",
+      "summary": "Jordan Love, Zay Flowers, 2024 Round 3 (Her Boutte Bi On My \u2018Jan)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "King of Turd Mountain"
+      ]
+    },
+    {
+      "trade_id": "964707955675373568",
+      "date": "2023-05-17",
+      "season": "2023",
+      "summary": "2023 Round 16 (Christian Mingle), 2024 Round 3 (Your Champion and Hero)",
+      "teams": [
+        "Christian Mingle",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "964643635008471040",
+      "date": "2023-05-17",
+      "season": "2023",
+      "summary": "2024 Round 4 (Ground Zero), 2023 Round 20 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "964614594096353280",
+      "date": "2023-05-17",
+      "season": "2023",
+      "summary": "2023 Round 13 (Huge Sacks), 2023 Round 21 (Huge Sacks), 2024 Round 2 (YEAH BO)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "964390430253047808",
+      "date": "2023-05-17",
+      "season": "2023",
+      "summary": "2023 Round 11 (Bailey ZAPDOS), 2023 Round 12 (Bailey ZAPDOS), 2023 Round 11 (TommyisBBCGangbangGirl), 2023 Round 12 (TommyisBBCGangbangGirl)",
+      "teams": [
+        "Bailey ZAPDOS",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "964390424695590912",
+      "date": "2023-05-17",
+      "season": "2023",
+      "summary": "2023 Round 11 (Her Boutte Bi on my Jan), 2023 Round 20 (Huge Sacks), 2023 Round 11 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "964330505921421312",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 10 (Her Boutte Bi on my Jan), 2023 Round 13 (Her Boutte Bi on my Jan), 2023 Round 9 (TommyisBBCGangbangGirl)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "TommyisBBCGangbangGirl"
+      ]
+    },
+    {
+      "trade_id": "964324316928110592",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 16 (Huge Sacks), 2023 Round 11 (Christian Mingle), 2023 Round 17 (Hani Likes Big Weiners EW), 2023 Round 21 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Christian Mingle",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "964314876749340672",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 16 (Huge Sacks), 2023 Round 18 (Hani Likes Big Weiners EW), 2023 Round 19 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "964277391780585472",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 17 (Huge Sacks), 2023 Round 20 (Huge Sacks), 2023 Round 16 (Revenge tour)",
+      "teams": [
+        "Huge Sacks",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "964272104273145856",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 7 (Jaxon Jackoffs), 2024 Round 1 (Andy Dalton), 2023 Round 7 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "964236870030884864",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 10 (Breece\u2019s Pieces), 2023 Round 6 (Breece\u2019s Pieces), 2023 Round 5 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "964166573382508544",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 6 (Revenge tour), 2023 Round 7 (Christian Mingle), 2025 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Christian Mingle",
+        "Hani Likes Big Weiners EW"
+      ]
+    },
+    {
+      "trade_id": "964001747586875392",
+      "date": "2023-05-16",
+      "season": "2023",
+      "summary": "2023 Round 4 (Huge Sacks), 2023 Round 6 (Huge Sacks), 2023 Round 3 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Huge Sacks"
+      ]
+    },
+    {
+      "trade_id": "963955313198080000",
+      "date": "2023-05-15",
+      "season": "2023",
+      "summary": "2023 Round 3 (Revenge tour), 2023 Round 6 (Revenge tour), 2023 Round 8 (Revenge tour), 2023 Round 11 (Hani Likes Big Weiners EW), 2023 Round 2 (Hani Likes Big Weiners EW)",
+      "teams": [
+        "Hani Likes Big Weiners EW",
+        "Revenge tour"
+      ]
+    },
+    {
+      "trade_id": "963938164043739136",
+      "date": "2023-05-15",
+      "season": "2023",
+      "summary": "2023 Round 2 (Jaxon Jackoffs), 2023 Round 7 (Jaxon Jackoffs), 2024 Round 3 (Jaxon Jackoffs), 2023 Round 4 (Christian Mingle), 2023 Round 3 (Breece\u2019s Pieces)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Jaxon Jackoffs"
+      ]
+    },
+    {
+      "trade_id": "963878829527752704",
+      "date": "2023-05-15",
+      "season": "2023",
+      "summary": "2023 Round 2 (Christian Mingle), 2023 Round 4 (Christian Mingle), 2024 Round 1 (Waiting For 2026 \ud83e\udd21 ), 2023 Round 1 (Breece\u2019s Pieces), 2023 Round 5 (Breece\u2019s Pieces)",
+      "teams": [
+        "Breece\u2019s Pieces",
+        "Christian Mingle"
+      ]
+    },
+    {
+      "trade_id": "960741897239048192",
+      "date": "2023-05-07",
+      "season": "2023",
+      "summary": "2023 Round 1 (Her Boutte Bi on my Jan), 2023 Round 4 (Her Boutte Bi on my Jan), 2024 Round 1 (Her Boutte Bi On My \u2018Jan), 2023 Round 1 (Little Richards), 2023 Round 2 (Little Richards)",
+      "teams": [
+        "Her Boutte Bi on my Jan",
+        "Little Richards"
+      ]
+    }
+  ]
+}
