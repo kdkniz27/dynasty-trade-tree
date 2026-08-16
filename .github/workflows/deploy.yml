@@ -1,0 +1,65 @@
+name: Deploy site
+
+# Builds the React/Vite frontend and publishes it to GitHub Pages -
+# free static hosting, no cold starts, no server to babysit. Runs on
+# every push to main, including the automatic commits made by
+# refresh-data.yml, so new trade data goes live automatically.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          # No npm cache here on purpose: it requires a committed
+          # package-lock.json. Once you've run `npm install` locally
+          # and committed the lockfile, you can add
+          # cache: "npm" / cache-dependency-path: web/package-lock.json
+          # back in to speed this up.
+
+      - name: Install dependencies
+        working-directory: web
+        run: npm install
+
+      - name: Build
+        working-directory: web
+        # BASE_PATH must match the repo name for a GitHub Pages
+        # *project* site (https://<user>.github.io/<repo>/). If you
+        # deploy to a custom domain or a *user/org* page instead,
+        # change this to "/".
+        env:
+          BASE_PATH: /${{ github.event.repository.name }}/
+        run: npm run build
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,44 @@
+name: Refresh trade data
+
+# Runs the Python data generator against the Sleeper API and commits
+# the updated JSON. This is what keeps the site current without a
+# live backend - no server, no cost, just a scheduled job.
+
+on:
+  schedule:
+    # 13:00 UTC daily (~9am ET / 6am PT). Edit to taste.
+    - cron: "0 13 * * *"
+  workflow_dispatch: {} # lets you trigger it manually from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r data/requirements.txt
+
+      - name: Generate data
+        env:
+          SLEEPER_LEAGUE_ID: ${{ vars.SLEEPER_LEAGUE_ID }}
+        run: python data/generate_data.py
+
+      - name: Commit updated data if it changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add web/public/data/trades.json
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "Refresh trade data ($(date -u +%Y-%m-%d))"
+            git push
+          fi
