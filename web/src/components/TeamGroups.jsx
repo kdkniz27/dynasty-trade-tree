@@ -60,7 +60,7 @@ export default function TeamGroups({ assets }) {
   })
 
   return (
-    <div className={'fanout' + (teams.length > 1 ? ' multi' : '')} style={teams.length <= 1 ? { paddingTop: 0 } : undefined}>
+    <div className="fanout">
       {teams.map((team) => (
         <TeamBranch
           key={team}

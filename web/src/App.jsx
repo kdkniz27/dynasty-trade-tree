@@ -20,6 +20,7 @@ export default function App() {
   const [activeTradeId, setActiveTradeId] = useState(tradeIdFromHash)
   const [activeTree, setActiveTree] = useState(null)
   const [treeError, setTreeError] = useState(null)
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const treeCache = useRef(new Map())
 
   useEffect(() => {
@@ -87,14 +88,24 @@ export default function App() {
 
   return (
     <div id="layout">
-      <Sidebar
-        trades={index.trades}
-        activeTradeId={activeTradeId}
-        onSelect={selectTrade}
-        search={search}
-        setSearch={setSearch}
-        meta={{ tradeCount: index.trades.length, generatedAt: index.generated_at }}
-      />
+      <div id="sidebar-wrap" className={sidebarOpen ? '' : 'collapsed'}>
+        <Sidebar
+          trades={index.trades}
+          activeTradeId={activeTradeId}
+          onSelect={selectTrade}
+          search={search}
+          setSearch={setSearch}
+          meta={{ tradeCount: index.trades.length, generatedAt: index.generated_at }}
+        />
+      </div>
+      <button
+        id="sidebar-toggle"
+        onClick={() => setSidebarOpen((open) => !open)}
+        aria-label={sidebarOpen ? 'Collapse trade list' : 'Expand trade list'}
+        title={sidebarOpen ? 'Collapse trade list' : 'Expand trade list'}
+      >
+        {sidebarOpen ? '‹' : '›'}
+      </button>
       <div id="main">
         {!activeTradeId && (
           <div id="placeholder">

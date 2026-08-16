@@ -212,6 +212,18 @@ def fetch_draft_selections(league_ids, league_data):
                 "season"
             ) or league_season
 
+            # Real draft date when Sleeper gives us one, so drafted picks
+            # can be sorted chronologically against trades instead of
+            # always assumed to come "first". Falls back to a rough
+            # late-April estimate (typical NFL draft timing) if missing.
+            start_time = draft.get("start_time")
+            if start_time:
+                draft_date = datetime.fromtimestamp(
+                    start_time / 1000, tz=timezone.utc
+                ).strftime("%Y-%m-%d")
+            else:
+                draft_date = f"{draft_season}-04-25"
+
             picks = get_data(f"https://api.sleeper.app/v1/draft/{draft_id}/picks")
 
             if not slot_to_roster_id:
@@ -238,6 +250,7 @@ def fetch_draft_selections(league_ids, league_data):
                 draft_pick_selections[key] = {
                     "player_id": player_id,
                     "pick_no": pick.get("pick_no"),
+                    "draft_date": draft_date,
                 }
 
     return draft_pick_selections
@@ -485,6 +498,7 @@ def build_asset_tree(
                 "season": season,
                 "round": round_num,
                 "pick_no": selection.get("pick_no"),
+                "draft_date": selection.get("draft_date"),
                 "trades": drafted_tree["trades"],
             }
 
@@ -684,6 +698,7 @@ def resolve_asset_for_display(
             "drafted_by": drafted_by,
             "round": drafted.get("round"),
             "pick_no": drafted.get("pick_no"),
+            "date": drafted.get("draft_date"),
             "trades": resolve_trade_list_for_display(
                 drafted.get("trades", []),
                 players,

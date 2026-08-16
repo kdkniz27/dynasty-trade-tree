@@ -12,7 +12,10 @@ function groupBy(items, keyFn) {
   return map
 }
 
-// A draft selection. Full-width block in the vertical timeline.
+// A draft selection. Its own independent branch - if the drafted
+// player was never traded again, this is a dead end (Frontier below
+// returns nothing), not a step leading into whatever else happens to
+// be nearby.
 function DraftedBlock({ asset }) {
   const d = asset.drafted_as
   const color = colorForTeam(d.drafted_by?.name)
@@ -32,7 +35,7 @@ function DraftedBlock({ asset }) {
         <div className="drafted-player">🏈 {d.player_name}</div>
       </div>
 
-      {/* Keep following the drafted player's own future trades. */}
+      {/* Keep following the drafted player's own future trades, if any. */}
       <Frontier
         assets={[{ name: d.player_name, type: 'player', trades: d.trades, drafted_as: null }]}
       />
@@ -42,6 +45,7 @@ function DraftedBlock({ asset }) {
 
 function HopBlock({ group }) {
   const hopTrade = group[0].trades[0]
+  const names = group.map((a) => a.name).join(', ')
 
   // already_shown is computed once, server-side, in generate_data.py -
   // the first branch to reach a given trade_id gets it drawn in full,
@@ -52,7 +56,6 @@ function HopBlock({ group }) {
   // branches would vanish depending on render order. Doing the dedup
   // once as pure data sidesteps that entirely.)
   if (hopTrade.already_shown) {
-    const names = group.map((a) => a.name).join(', ')
     return (
       <div className="hop-ref">
         <div className="hop-ref-assets">{names}</div>
@@ -69,13 +72,14 @@ function HopBlock({ group }) {
 
   return (
     <div className="hop-block">
-      <div className="hop-label">
-        <span className="hop-tag">TRADED</span>
-        <span className="hop-date">{hopTrade.date}</span>
+      <div className="hop-tag">🔁 TRADED</div>
+      <div className="hop-meta">
+        <span>{hopTrade.date}</span>
         <span className="trade-id-pill" title={hopTrade.trade_id}>
           #{truncateId(hopTrade.trade_id)}
         </span>
       </div>
+      <div className="hop-assets">{names}</div>
 
       {hopTrade.assets?.length > 0 && <TeamGroups assets={hopTrade.assets} />}
 
@@ -91,37 +95,42 @@ function HopBlock({ group }) {
   )
 }
 
-// Everything that happens NEXT to a set of assets stacks in one
-// vertical timeline, top to bottom in chronological order - a draft
-// selection, then a subsequent trade, then whatever happened after
-// that. When the SAME team's assets fork into genuinely independent
-// futures (e.g. it traded two of its four new pieces separately),
-// those futures stack as separate blocks in this same column rather
-// than sprawling sideways. The only place this tree still branches
-// horizontally is a trade itself having multiple destination teams
-// (see TeamGroups) - a true fork in a single moment, not a timeline.
+// Everything that happens NEXT to a set of assets: a draft selection,
+// a subsequent trade, whatever comes after that. These are genuinely
+// PARALLEL, independent branches (the team held onto 4 things and did
+// 4 different things with them later) - so they sit side by side, in
+// chronological order left to right, exactly like the two sides of a
+// single trade do. What's NOT parallel is the deeper future of any
+// ONE of these branches - that continues straight down, nested inside
+// its own branch, which is what actually keeps this tree from
+// sprawling sideways as it goes deeper.
 export default function Frontier({ assets }) {
   const items = []
 
   assets
     .filter((a) => a.drafted_as)
     .forEach((a) => {
-      items.push({ key: a.asset_id + '-drafted', node: <DraftedBlock asset={a} /> })
+      items.push({
+        key: a.asset_id + '-drafted',
+        date: a.drafted_as.date || '',
+        node: <DraftedBlock asset={a} />,
+      })
     })
 
   const withNext = assets.filter((a) => a.trades && a.trades.length > 0)
   const byTradeId = groupBy(withNext, (a) => a.trades[0].trade_id)
   Object.entries(byTradeId).forEach(([tradeId, group]) => {
-    items.push({ key: tradeId, node: <HopBlock group={group} /> })
+    items.push({ key: tradeId, date: group[0].trades[0].date || '', node: <HopBlock group={group} /> })
   })
 
   if (items.length === 0) return null
 
+  items.sort((a, b) => a.date.localeCompare(b.date))
+
   return (
-    <div className="timeline">
+    <div className="fanout">
       {items.map(({ key, node }) => (
-        <div className="timeline-item" key={key}>
-          <div className="stem" />
+        <div className="branch frontier-branch" key={key}>
           {node}
         </div>
       ))}
