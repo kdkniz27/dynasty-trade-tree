@@ -1,6 +1,14 @@
 import React from 'react'
 
-export default function Sidebar({ trades, activeTradeId, onSelect, search, setSearch, meta }) {
+export default function Sidebar({
+  trades,
+  activeTradeId,
+  onSelect,
+  search,
+  setSearch,
+  onSwitchLeague,
+  meta,
+}) {
   const q = search.toLowerCase()
   const filtered = trades.filter(
     (t) =>
@@ -12,12 +20,17 @@ export default function Sidebar({ trades, activeTradeId, onSelect, search, setSe
   return (
     <div id="sidebar">
       <div id="sidebar-header">
-        <h1>Dynasty Trade Tree</h1>
+        <h1>{meta?.leagueName || 'Trade Trees'}</h1>
         {meta && (
           <div id="meta-line">
             {meta.tradeCount} trades &middot; updated{' '}
             {meta.generatedAt ? new Date(meta.generatedAt).toLocaleDateString() : '—'}
           </div>
+        )}
+        {onSwitchLeague && (
+          <button type="button" id="switch-league" onClick={onSwitchLeague}>
+            ← switch league
+          </button>
         )}
         <input
           id="search"

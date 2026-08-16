@@ -19,16 +19,22 @@ without you doing anything.
 
 OUTPUT
 ------
-web/public/data/trades.json - a lightweight index for the sidebar:
+This site can serve more than one league - the frontend lets someone
+paste in a league ID, and only leagues generated here will actually
+have data. Everything is namespaced under that league's ID:
+
+web/public/data/<league_id>/trades.json - a lightweight index for the
+sidebar:
 {
   "generated_at": "2026-08-16T12:00:00Z",
   "league_id": "1312658766117744640",
+  "league_name": "My Dynasty League",
   "trades": [ {trade_id, date, season, summary, teams}, ... ]
 }
 
-web/public/data/trees/<trade_id>.json - one file per trade, the full
-name-resolved tree for that trade, fetched lazily by the frontend only
-when that trade is selected:
+web/public/data/<league_id>/trees/<trade_id>.json - one file per
+trade, the full name-resolved tree for that trade, fetched lazily by
+the frontend only when that trade is selected:
 { "trade_id": ..., "date": ..., "assets": [ ...fully resolved... ] }
 
 Each trade gets its own file (instead of one giant combined file)
@@ -40,6 +46,19 @@ the one tree you're actually looking at.
 Every name (players, teams, picks) is already resolved to plain
 strings in these files - the frontend never needs players.json or any
 Sleeper call at runtime.
+
+WHICH LEAGUES GET GENERATED
+----------------------------
+Set the SLEEPER_LEAGUE_IDS environment variable to a comma-separated
+list of current-season league IDs (one per league you want the site
+to serve), e.g. "1312658766117744640,999888777666555444". Each one
+gets its own folder under web/public/data/. A league ID that was
+never included here will 404 on the site - pasting it into the "Paste
+your League ID here" box doesn't fetch it live, it just looks for a
+folder that has to already exist from a previous run of this script.
+To add a new league: add its ID to SLEEPER_LEAGUE_IDS (as a GitHub
+Actions repo variable, or in your local .env), then run this script
+(or the "Refresh trade data" workflow) once.
 """
 
 import json
@@ -52,14 +71,19 @@ import requests
 # Config
 # ---------------------------------------------------------------------------
 
-CURRENT_LEAGUE_ID = os.environ.get("SLEEPER_LEAGUE_ID") or "1312658766117744640"
+LEAGUE_IDS = [
+    lid.strip()
+    for lid in os.environ.get(
+        "SLEEPER_LEAGUE_IDS",
+        os.environ.get("SLEEPER_LEAGUE_ID") or "1312658766117744640",
+    ).split(",")
+    if lid.strip()
+]
 
-DATA_DIR = os.environ.get(
+DATA_ROOT = os.environ.get(
     "DATA_DIR",
     os.path.join(os.path.dirname(__file__), "..", "web", "public", "data"),
 )
-INDEX_PATH = os.path.join(DATA_DIR, "trades.json")
-TREES_DIR = os.path.join(DATA_DIR, "trees")
 
 
 # ---------------------------------------------------------------------------
@@ -736,11 +760,16 @@ def resolve_trade_tree_for_display(tree, players, team_names, season_to_league_i
 # Main
 # ---------------------------------------------------------------------------
 
-def main():
-    players = fetch_players()
+def generate_for_league(current_league_id, players):
+    """Runs the full fetch/build/resolve pipeline for ONE league and
+    writes its output under web/public/data/<current_league_id>/."""
 
+    index_path = os.path.join(DATA_ROOT, current_league_id, "trades.json")
+    trees_dir = os.path.join(DATA_ROOT, current_league_id, "trees")
+
+    print(f"\n=== League {current_league_id} ===")
     print("Fetching league history...")
-    league_ids = get_league_history(CURRENT_LEAGUE_ID)
+    league_ids = get_league_history(current_league_id)
     print(f"Found {len(league_ids)} season(s): {league_ids}")
 
     print("Fetching rosters/users/team names for every season...")
@@ -759,13 +788,13 @@ def main():
     asset_history = build_asset_history(trade_ledger)
 
     print("Building + resolving a tree for every trade, one file each...")
-    os.makedirs(TREES_DIR, exist_ok=True)
+    os.makedirs(trees_dir, exist_ok=True)
 
     # Wipe stale per-trade files from previous runs (e.g. a trade that
     # no longer exists) so the trees/ folder never accumulates orphans.
-    for existing in os.listdir(TREES_DIR):
+    for existing in os.listdir(trees_dir):
         if existing.endswith(".json"):
-            os.remove(os.path.join(TREES_DIR, existing))
+            os.remove(os.path.join(trees_dir, existing))
 
     trade_summaries = []
     total_bytes = 0
@@ -802,7 +831,7 @@ def main():
             tree, players, team_names, season_to_league_id
         )
 
-        tree_path = os.path.join(TREES_DIR, f"{trade_id}.json")
+        tree_path = os.path.join(trees_dir, f"{trade_id}.json")
         with open(tree_path, "w") as f:
             json.dump(resolved, f, separators=(",", ":"))  # no indent - keeps files small
 
@@ -815,21 +844,34 @@ def main():
 
     index = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "league_id": CURRENT_LEAGUE_ID,
+        "league_id": current_league_id,
+        "league_name": league_data.get(current_league_id, {}).get("name"),
         "trades": trade_summaries,
     }
 
-    os.makedirs(DATA_DIR, exist_ok=True)
-    with open(INDEX_PATH, "w") as f:
+    os.makedirs(os.path.dirname(index_path), exist_ok=True)
+    with open(index_path, "w") as f:
         json.dump(index, f, indent=2)
 
-    print(f"\nWrote {INDEX_PATH} ({len(all_trades)} trades)")
+    print(f"\nWrote {index_path} ({len(all_trades)} trades)")
     print(
-        f"Wrote {len(all_trades)} tree file(s) to {TREES_DIR} "
+        f"Wrote {len(all_trades)} tree file(s) to {trees_dir} "
         f"({total_bytes / (1024 * 1024):.2f} MB total)"
     )
     if biggest[0]:
         print(f"Largest single tree: {biggest[0]} ({biggest[1] / (1024 * 1024):.2f} MB)")
+
+
+def main():
+    # Fetched once and shared across every league in LEAGUE_IDS - it's
+    # the full NFL player list, not league-specific, so there's no
+    # reason to re-download it per league.
+    players = fetch_players()
+
+    for current_league_id in LEAGUE_IDS:
+        generate_for_league(current_league_id, players)
+
+    print(f"\nDone. Generated {len(LEAGUE_IDS)} league(s): {LEAGUE_IDS}")
 
 
 if __name__ == "__main__":

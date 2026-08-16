@@ -28,6 +28,13 @@ jobs:
 
       - name: Generate data
         env:
+          # Comma-separated list of league IDs to generate, e.g.
+          # "1312658766117744640,999888777666555444". Set this as a
+          # repo variable (Settings -> Secrets and variables -> Actions
+          # -> Variables) named SLEEPER_LEAGUE_IDS to add or remove
+          # leagues the site serves. SLEEPER_LEAGUE_ID (singular) still
+          # works as a one-league fallback if that's all you've set.
+          SLEEPER_LEAGUE_IDS: ${{ vars.SLEEPER_LEAGUE_IDS }}
           SLEEPER_LEAGUE_ID: ${{ vars.SLEEPER_LEAGUE_ID }}
         run: python data/generate_data.py
 
@@ -35,7 +42,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add web/public/data/trades.json web/public/data/trees/
+          git add web/public/data/
           if git diff --staged --quiet; then
             echo "No changes to commit."
           else

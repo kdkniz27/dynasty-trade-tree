@@ -61,6 +61,12 @@ body {
   -webkit-background-clip: text; background-clip: text; color: transparent;
 }
 #meta-line { font-size: 11px; color: var(--muted); margin-bottom: 12px; letter-spacing: 0.02em; }
+#switch-league {
+  display: block; background: none; border: none; cursor: pointer;
+  color: var(--accent); font-size: 11px; font-family: var(--font-body);
+  padding: 0 0 12px 0; letter-spacing: 0.02em;
+}
+#switch-league:hover { text-decoration: underline; }
 #search {
   width: 100%; padding: 9px 12px; border-radius: 8px;
   border: 1px solid var(--border); background: rgba(0,0,0,0.18);
@@ -120,14 +126,14 @@ body {
    by side, generations go downward, which is what keeps the tree
    from sprawling as it goes deeper.
 
-   Each sibling draws its OWN short connector stem, rather than one
-   shared bar spanning the whole row. That's deliberate: a shared bar
-   only makes sense for a single row, and this row is allowed to WRAP
-   onto a second line whenever the siblings don't fit at the current
-   window width (flex-wrap below) - individual stems keep looking
-   correct no matter how many rows it takes, which a single spanning
-   bar can't do. */
-.fanout { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; }
+   With more than one sibling, the connector reads top to bottom as:
+   one shared stem down from the parent, a horizontal bar, then each
+   sibling's own short stem down from the bar to its header - a
+   single trunk splitting into branches, not a row of stems that
+   happen to have a line drawn across them afterward. */
+.fanout {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 0; position: relative;
+}
 .fanout > .branch {
   position: relative; padding: 30px 18px 0 18px; margin-bottom: 12px;
 }
@@ -135,6 +141,43 @@ body {
   content: ''; position: absolute; top: 0; left: 50%;
   width: 2px; height: 26px; background: var(--line); transform: translateX(-1px);
 }
+
+/* Multi-sibling case: a single shared trunk drops from the parent,
+   then splits into a bar and each branch's own stem down to its
+   header. The bar is NOT one element sized off the fanout's own box
+   (that box can be wider than its content once things wrap or the
+   container stretches, which is what was pushing the bar out past
+   the outer branches). Instead every branch draws a horizontal
+   segment across ITS OWN width - the middle ones full-width, the
+   first only from its center rightward, the last only from its
+   center leftward. Butted up against each other, those segments read
+   as one continuous bar that starts and ends exactly at the outer
+   branches, however wide those branches actually are. */
+.fanout.multi { padding-top: 52px; }
+.fanout.multi::before {
+  content: ''; position: absolute; top: 0; left: 50%;
+  width: 2px; height: 26px; background: var(--line); transform: translateX(-1px);
+}
+.fanout.multi > .branch { padding-top: 0; }
+.fanout.multi > .branch::before { top: -26px; height: 26px; }
+.fanout.multi > .branch::after {
+  content: ''; position: absolute; top: -26px; left: 0; right: 0;
+  height: 2px; background: var(--line);
+}
+.fanout.multi > .branch:first-child::after { left: 50%; }
+.fanout.multi > .branch:last-child::after { right: 50%; }
+
+/* The two (occasionally three+) sides of a single trade. These almost
+   always fit far more comfortably than Frontier's sibling rows, and -
+   unlike Frontier's siblings - one side's future can be dramatically
+   taller than the other's. If that mismatched pair ever wrapped onto
+   two lines, flexbox sizes each line by its tallest item, so the
+   shorter side would get shoved down below the taller side's entire
+   subtree instead of sitting next to it. Keeping this row on a single
+   line (scrolling sideways if it's ever too narrow) avoids that
+   entirely. */
+.fanout.team-fanout { flex-wrap: nowrap; overflow-x: auto; overflow-y: hidden; padding-bottom: 2px; }
+.fanout.team-fanout > .branch { flex-shrink: 0; }
 
 .branch { display: flex; flex-direction: column; align-items: center; min-width: 200px; animation: fadeIn 0.2s ease; }
 .branch-header {
@@ -154,6 +197,21 @@ body {
   transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .team-card:hover { transform: translateY(-1px); }
+
+/* Any card whose downstream can be hidden - team-card, drafted-card,
+   hop-block - gets this treatment. Collapsing only hides what comes
+   AFTER the card (its Frontier); the card's own content stays put,
+   so you never lose track of what actually happened, just how far
+   it's been followed. */
+.collapsible { cursor: pointer; user-select: none; }
+.collapsible:hover { border-color: var(--accent) !important; }
+.collapsible.is-collapsed { opacity: 0.82; }
+.collapse-indicator {
+  font-size: 10px; color: var(--muted); text-align: center;
+  margin-top: 6px; padding-top: 6px; border-top: 1px dashed rgba(255,255,255,0.12);
+  letter-spacing: 0.03em; width: 100%; align-self: stretch;
+}
+.collapsible:hover .collapse-indicator { color: var(--accent); }
 .section-label {
   font-size: 9.5px; font-weight: 800; letter-spacing: 0.12em;
   color: var(--muted); padding: 4px 3px 0 3px;
@@ -199,7 +257,7 @@ body {
   display: flex; flex-direction: column; align-items: center; gap: 2px;
   width: 100%; max-width: 720px;
   border: 1px solid var(--accent); border-radius: 18px;
-  padding: 14px 18px 20px 18px; margin-top: 6px;
+  padding: 14px 18px 20px 18px; margin-top: 6px; margin-bottom: 4px;
   background: linear-gradient(165deg, rgba(108,155,245,0.16), rgba(108,155,245,0.03));
   box-shadow: 0 6px 20px rgba(108,155,245,0.13), 0 2px 6px rgba(0,0,0,0.28);
 }
@@ -248,7 +306,72 @@ body {
 .hop-ref-assets { color: var(--text); font-weight: 700; font-size: 12px; margin-bottom: 4px; }
 .hop-ref-body { font-style: italic; line-height: 1.55; }
 
+/* ---------------- home / league picker ---------------- */
+#home {
+  height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+}
+#home-card {
+  width: 100%; max-width: 440px; text-align: center;
+  background: linear-gradient(165deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 44px 36px 32px 36px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+}
+#home-title {
+  font-family: var(--font-display); font-size: 56px; font-weight: 700;
+  letter-spacing: 0.02em; margin: 0 0 30px 0; line-height: 1;
+  background: linear-gradient(90deg, #fff, #b9c6e8);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+#home-form { display: flex; flex-direction: column; gap: 10px; }
+#home-label { font-size: 12px; color: var(--muted); text-align: left; letter-spacing: 0.02em; }
+#home-input {
+  width: 100%; padding: 12px 14px; border-radius: 10px;
+  border: 1px solid var(--border); background: rgba(0,0,0,0.22);
+  color: var(--text); font-size: 15px; font-family: var(--font-body);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+#home-input:focus { outline: none; border-color: var(--accent); background: rgba(108,155,245,0.1); }
+#home-input::placeholder { color: var(--muted); }
+#home-submit {
+  margin-top: 4px; padding: 11px 14px; border-radius: 10px; border: none;
+  background: linear-gradient(135deg, var(--accent), #5a86e0); color: #fff;
+  font-size: 14px; font-weight: 700; letter-spacing: 0.02em; cursor: pointer;
+  box-shadow: 0 6px 16px rgba(108,155,245,0.3);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+#home-submit:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(108,155,245,0.4); }
+#home-error {
+  text-align: left; font-size: 12px; color: #f0728a; line-height: 1.5;
+  background: rgba(240,114,138,0.1); border: 1px solid rgba(240,114,138,0.3);
+  border-radius: 8px; padding: 9px 12px; margin-top: 4px;
+}
+
+#home-beta {
+  margin-top: 30px; padding-top: 22px; border-top: 1px solid var(--border);
+}
+#home-beta-label { font-size: 11.5px; color: var(--muted); margin-bottom: 10px; }
+#home-beta-row {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(0,0,0,0.22); border: 1px solid var(--border);
+  border-radius: 10px; padding: 8px 8px 8px 14px;
+}
+#home-beta-id {
+  flex: 1; text-align: left; font-family: ui-monospace, Menlo, monospace;
+  font-size: 12.5px; color: var(--accent-2); overflow-wrap: anywhere;
+}
+#home-beta-copy {
+  flex-shrink: 0; padding: 7px 12px; border-radius: 7px; border: 1px solid var(--border);
+  background: var(--card); color: var(--text); font-size: 11.5px; font-weight: 600;
+  cursor: pointer; transition: background 0.12s ease, border-color 0.12s ease;
+}
+#home-beta-copy:hover { background: rgba(108,155,245,0.16); border-color: var(--accent); }
+
 @media (max-width: 780px) {
+  #home-card { padding: 34px 22px 26px 22px; }
+  #home-title { font-size: 40px; }
+
   #layout { flex-direction: column; height: auto; min-height: 100vh; }
   #sidebar-wrap { width: 100%; max-height: 40vh; }
   #sidebar-wrap.collapsed { width: 100%; max-height: 0; }

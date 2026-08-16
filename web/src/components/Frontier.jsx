@@ -1,5 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { colorForTeam, truncateId } from '../lib/colors.js'
+import { hasFrontier, countFrontier } from '../lib/treeUtils.js'
+import { CollapseIndicator } from './Shared.jsx'
 import TeamGroups from './TeamGroups.jsx'
 
 function groupBy(items, keyFn) {
@@ -19,10 +21,18 @@ function groupBy(items, keyFn) {
 function DraftedBlock({ asset }) {
   const d = asset.drafted_as
   const color = colorForTeam(d.drafted_by?.name)
+  const [collapsed, setCollapsed] = useState(false)
+  const downstream = [{ name: d.player_name, type: 'player', trades: d.trades, drafted_as: null }]
+  const canCollapse = hasFrontier(downstream)
 
   return (
     <>
-      <div className="drafted-card">
+      <div
+        className={'drafted-card' + (canCollapse ? ' collapsible' : '') + (collapsed ? ' is-collapsed' : '')}
+        onClick={canCollapse ? () => setCollapsed((c) => !c) : undefined}
+        role={canCollapse ? 'button' : undefined}
+        tabIndex={canCollapse ? 0 : undefined}
+      >
         <div className="drafted-tag">🎯 DRAFTED</div>
         <div className="drafted-from">{asset.name}</div>
         <div className="drafted-detail">
@@ -33,12 +43,13 @@ function DraftedBlock({ asset }) {
           by {d.drafted_by?.name}
         </div>
         <div className="drafted-player">🏈 {d.player_name}</div>
+        {canCollapse && (
+          <CollapseIndicator collapsed={collapsed} count={collapsed ? countFrontier(downstream) : 0} />
+        )}
       </div>
 
       {/* Keep following the drafted player's own future trades, if any. */}
-      <Frontier
-        assets={[{ name: d.player_name, type: 'player', trades: d.trades, drafted_as: null }]}
-      />
+      {!collapsed && <Frontier assets={downstream} />}
     </>
   )
 }
@@ -46,6 +57,7 @@ function DraftedBlock({ asset }) {
 function HopBlock({ group }) {
   const hopTrade = group[0].trades[0]
   const names = group.map((a) => a.name).join(', ')
+  const [collapsed, setCollapsed] = useState(false)
 
   // already_shown is computed once, server-side, in generate_data.py -
   // the first branch to reach a given trade_id gets it drawn in full,
@@ -70,28 +82,52 @@ function HopBlock({ group }) {
     )
   }
 
+  // The hop-block card itself only shows what happened IN THIS TRADE -
+  // who was involved and what moved. Everything that happens AFTER it
+  // (the trade's own two-sided split, or an asset traded yet again)
+  // renders as siblings BELOW the card, not nested inside it - nesting
+  // them inside .hop-block was making the bordered card stretch to
+  // wrap every future generation, so one trade card could end up
+  // hundreds of pixels tall with three unrelated "levels" glued inside
+  // a single box. Each level now gets its own card, stacked top to
+  // bottom, exactly like the root trade does.
+  const continuing = group.filter((a) => a.trades.length > 1)
+  const downstreamCount =
+    countFrontier(hopTrade.assets || []) +
+    continuing.reduce((sum, a) => sum + countFrontier([{ ...a, trades: a.trades.slice(1) }]), 0)
+  const canCollapse = downstreamCount > 0
+
   return (
-    <div className="hop-block">
-      <div className="hop-tag">🔁 TRADED</div>
-      <div className="hop-meta">
-        <span>{hopTrade.date}</span>
-        <span className="trade-id-pill" title={hopTrade.trade_id}>
-          #{truncateId(hopTrade.trade_id)}
-        </span>
+    <>
+      <div
+        className={'hop-block' + (canCollapse ? ' collapsible' : '') + (collapsed ? ' is-collapsed' : '')}
+        onClick={canCollapse ? () => setCollapsed((c) => !c) : undefined}
+        role={canCollapse ? 'button' : undefined}
+        tabIndex={canCollapse ? 0 : undefined}
+      >
+        <div className="hop-tag">🔁 TRADED</div>
+        <div className="hop-meta">
+          <span>{hopTrade.date}</span>
+          <span className="trade-id-pill" title={hopTrade.trade_id}>
+            #{truncateId(hopTrade.trade_id)}
+          </span>
+        </div>
+        <div className="hop-assets">{names}</div>
+        {canCollapse && (
+          <CollapseIndicator collapsed={collapsed} count={collapsed ? downstreamCount : 0} />
+        )}
       </div>
-      <div className="hop-assets">{names}</div>
 
-      {hopTrade.assets?.length > 0 && <TeamGroups assets={hopTrade.assets} />}
+      {!collapsed && hopTrade.assets?.length > 0 && <TeamGroups assets={hopTrade.assets} />}
 
-      {group.map((a) =>
-        a.trades.length > 1 ? (
+      {!collapsed &&
+        continuing.map((a) => (
           <React.Fragment key={a.asset_id || a.name}>
             <div className="continuing-label">{a.name} traded again</div>
             <Frontier assets={[{ ...a, trades: a.trades.slice(1) }]} />
           </React.Fragment>
-        ) : null
-      )}
-    </div>
+        ))}
+    </>
   )
 }
 
@@ -128,7 +164,7 @@ export default function Frontier({ assets }) {
   items.sort((a, b) => a.date.localeCompare(b.date))
 
   return (
-    <div className="fanout">
+    <div className={items.length > 1 ? 'fanout multi' : 'fanout'}>
       {items.map(({ key, node }) => (
         <div className="branch frontier-branch" key={key}>
           {node}

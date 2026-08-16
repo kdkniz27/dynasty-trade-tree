@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { colorForTeam } from '../lib/colors.js'
-import { AssetGroupBox, SectionLabel } from './Shared.jsx'
+import { AssetGroupBox, SectionLabel, CollapseIndicator } from './Shared.jsx'
+import { hasFrontier, countFrontier } from '../lib/treeUtils.js'
 import Frontier from './Frontier.jsx'
 
 // A team banner showing what that team RECEIVED and what it SENT in
 // a single trade, then whatever happens next to the assets it
 // received. Only received assets continue down the tree - the team
 // no longer holds what it sent away.
+//
+// Clicking the card collapses everything below it (what this team
+// went on to do with what it received) without hiding the trade
+// itself - useful for zooming out on a big tree without losing track
+// of who was actually in it.
 export function TeamBranch({ team, receives, sends }) {
   const color = colorForTeam(team)
+  const [collapsed, setCollapsed] = useState(false)
+  const canCollapse = hasFrontier(receives)
 
   return (
     <div className="branch">
@@ -19,7 +27,13 @@ export function TeamBranch({ team, receives, sends }) {
         {team}
       </div>
 
-      <div className="team-card" style={{ borderColor: color + '44' }}>
+      <div
+        className={'team-card' + (canCollapse ? ' collapsible' : '') + (collapsed ? ' is-collapsed' : '')}
+        style={{ borderColor: color + '44' }}
+        onClick={canCollapse ? () => setCollapsed((c) => !c) : undefined}
+        role={canCollapse ? 'button' : undefined}
+        tabIndex={canCollapse ? 0 : undefined}
+      >
         {receives.length > 0 && (
           <>
             <SectionLabel>↓ RECEIVES</SectionLabel>
@@ -37,9 +51,12 @@ export function TeamBranch({ team, receives, sends }) {
             />
           </>
         )}
+        {canCollapse && (
+          <CollapseIndicator collapsed={collapsed} count={collapsed ? countFrontier(receives) : 0} />
+        )}
       </div>
 
-      <Frontier assets={receives} />
+      {!collapsed && <Frontier assets={receives} />}
     </div>
   )
 }
@@ -59,8 +76,12 @@ export default function TeamGroups({ assets }) {
     })
   })
 
+  const fanoutClass = ['fanout', 'team-fanout', teams.length > 1 ? 'multi' : null]
+    .filter(Boolean)
+    .join(' ')
+
   return (
-    <div className="fanout">
+    <div className={fanoutClass}>
       {teams.map((team) => (
         <TeamBranch
           key={team}

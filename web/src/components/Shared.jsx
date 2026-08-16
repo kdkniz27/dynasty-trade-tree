@@ -54,3 +54,15 @@ export function AssetGroupBox({ assets, muted, showCounterparty, counterpartyKey
 export function SectionLabel({ children }) {
   return <div className="section-label">{children}</div>
 }
+
+// Sits at the bottom of any card whose downstream can be collapsed.
+// Collapsed state names how much is hidden rather than just showing
+// a bare arrow, so it's obvious there's more tree to see, not that
+// the branch dead-ended here.
+export function CollapseIndicator({ collapsed, count }) {
+  return (
+    <div className="collapse-indicator">
+      {collapsed ? `▸ show ${count} more` : '▾ collapse'}
+    </div>
+  )
+}

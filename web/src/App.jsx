@@ -1,12 +1,25 @@
 import React, { useEffect, useState, useCallback, useRef } from 'react'
+import Home from './components/Home.jsx'
 import Sidebar from './components/Sidebar.jsx'
 import TreeView from './components/TreeView.jsx'
 
 // Trees are fetched one at a time (not bundled into the index) so the
 // site only downloads the tree you're actually viewing, and no single
 // file gets anywhere near GitHub's 100 MB per-file push limit.
-const INDEX_URL = `${import.meta.env.BASE_URL}data/trades.json`
-const treeUrl = (tradeId) => `${import.meta.env.BASE_URL}data/trees/${tradeId}.json`
+//
+// Everything is namespaced by league ID (?league=... in the URL) so
+// the site can serve more than one Sleeper league - see
+// data/generate_data.py for how a league's data gets generated in
+// the first place. A league ID that was never generated will just
+// 404 here, which is handled below as "not available yet" rather
+// than a generic error.
+const indexUrl = (leagueId) => `${import.meta.env.BASE_URL}data/${leagueId}/trades.json`
+const treeUrl = (leagueId, tradeId) =>
+  `${import.meta.env.BASE_URL}data/${leagueId}/trees/${tradeId}.json`
+
+function leagueIdFromUrl() {
+  return new URLSearchParams(window.location.search).get('league')
+}
 
 function tradeIdFromHash() {
   const hash = window.location.hash.replace('#', '')
@@ -14,8 +27,10 @@ function tradeIdFromHash() {
 }
 
 export default function App() {
+  const [leagueId, setLeagueId] = useState(leagueIdFromUrl)
   const [index, setIndex] = useState(null)
   const [indexError, setIndexError] = useState(null)
+  const [indexNotFound, setIndexNotFound] = useState(false)
   const [search, setSearch] = useState('')
   const [activeTradeId, setActiveTradeId] = useState(tradeIdFromHash)
   const [activeTree, setActiveTree] = useState(null)
@@ -23,15 +38,59 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const treeCache = useRef(new Map())
 
+  // Picking a league (from the home screen, or switching later) puts
+  // it in the URL so the link is shareable, and clears anything tied
+  // to whatever league was previously loaded.
+  const selectLeague = useCallback((id) => {
+    treeCache.current = new Map()
+    setIndex(null)
+    setIndexError(null)
+    setIndexNotFound(false)
+    setActiveTradeId(null)
+    setActiveTree(null)
+    setLeagueId(id)
+
+    const url = new URL(window.location.href)
+    url.searchParams.set('league', id)
+    url.hash = ''
+    window.history.pushState(null, '', url)
+  }, [])
+
+  const goHome = useCallback(() => {
+    setLeagueId(null)
+    setIndex(null)
+    const url = new URL(window.location.href)
+    url.searchParams.delete('league')
+    url.hash = ''
+    window.history.pushState(null, '', url)
+  }, [])
+
   useEffect(() => {
-    fetch(INDEX_URL)
+    const onPopState = () => {
+      setLeagueId(leagueIdFromUrl())
+      setActiveTradeId(tradeIdFromHash())
+    }
+    window.addEventListener('popstate', onPopState)
+    return () => window.removeEventListener('popstate', onPopState)
+  }, [])
+
+  useEffect(() => {
+    if (!leagueId) return
+
+    fetch(indexUrl(leagueId))
       .then((res) => {
+        if (res.status === 404) {
+          setIndexNotFound(true)
+          throw new Error('not found')
+        }
         if (!res.ok) throw new Error(`Failed to load trade list (${res.status})`)
         return res.json()
       })
       .then(setIndex)
-      .catch((err) => setIndexError(err.message))
-  }, [])
+      .catch((err) => {
+        if (err.message !== 'not found') setIndexError(err.message)
+      })
+  }, [leagueId])
 
   // Keep the URL hash and selection in sync, so a specific tree is
   // shareable/bookmarkable.
@@ -47,7 +106,7 @@ export default function App() {
   }, [])
 
   useEffect(() => {
-    if (!activeTradeId) {
+    if (!activeTradeId || !leagueId) {
       setActiveTree(null)
       return
     }
@@ -60,7 +119,7 @@ export default function App() {
 
     setTreeError(null)
     setActiveTree(null)
-    fetch(treeUrl(activeTradeId))
+    fetch(treeUrl(leagueId, activeTradeId))
       .then((res) => {
         if (!res.ok) throw new Error(`Failed to load this trade (${res.status})`)
         return res.json()
@@ -70,7 +129,20 @@ export default function App() {
         setActiveTree(tree)
       })
       .catch((err) => setTreeError(err.message))
-  }, [activeTradeId])
+  }, [activeTradeId, leagueId])
+
+  if (!leagueId) {
+    return <Home onSubmit={selectLeague} />
+  }
+
+  if (indexNotFound) {
+    return (
+      <Home
+        onSubmit={selectLeague}
+        error={`League ${leagueId} hasn't been added to this site yet. Ask Kobe to add it, or try the beta league below.`}
+      />
+    )
+  }
 
   if (indexError) {
     return (
@@ -95,7 +167,12 @@ export default function App() {
           onSelect={selectTrade}
           search={search}
           setSearch={setSearch}
-          meta={{ tradeCount: index.trades.length, generatedAt: index.generated_at }}
+          onSwitchLeague={goHome}
+          meta={{
+            tradeCount: index.trades.length,
+            generatedAt: index.generated_at,
+            leagueName: index.league_name,
+          }}
         />
       </div>
       <button
