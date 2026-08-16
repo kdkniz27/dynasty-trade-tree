@@ -582,18 +582,57 @@ def player_meta(player_id, players):
     }
 
 
-def resolve_trade_list_for_display(trades, players, team_names, season_to_league_id):
+def resolve_trade_list_for_display(
+    trades, players, team_names, season_to_league_id, seen_trades
+):
+    """Resolve a list of forward-hop trades for display.
+
+    seen_trades is a single mutable set threaded through the ENTIRE
+    recursive walk of one root tree. The first time we reach a given
+    trade_id, we resolve it in full (and mark it seen). Every other
+    branch that reaches the SAME trade_id later - very common, since
+    one trade can involve 3+ teams and several of our traced assets
+    can all lead back to it - gets a lightweight "already_shown" stub
+    instead of a second full copy. This used to be done as a mutable
+    Set touched during React's render (see git history) but React can
+    legitimately render a component more than once (StrictMode does
+    this on purpose in development to catch exactly this kind of bug),
+    which corrupted the dedup and made real branches vanish. Doing it
+    once here, as a pure data-generation step, is deterministic and
+    fixes that for good - and also shrinks the output, since we no
+    longer serialize the same subtree many times over.
+    """
+
     out = []
     for trade in trades:
+        trade_id = trade["trade_id"]
+
+        if trade_id in seen_trades:
+            out.append(
+                {
+                    "trade_id": trade_id,
+                    "date": trade["date"],
+                    "already_shown": True,
+                }
+            )
+            continue
+
+        seen_trades.add(trade_id)
         dest = resolve_team(trade["league_id"], trade.get("moved_to"), team_names)
         out.append(
             {
-                "trade_id": trade["trade_id"],
+                "trade_id": trade_id,
                 "date": trade["date"],
                 "moved_to": dest,
+                "already_shown": False,
                 "assets": [
                     resolve_asset_for_display(
-                        asset, players, team_names, season_to_league_id, trade["league_id"]
+                        asset,
+                        players,
+                        team_names,
+                        season_to_league_id,
+                        trade["league_id"],
+                        seen_trades,
                     )
                     for asset in trade["assets"]
                 ],
@@ -602,7 +641,9 @@ def resolve_trade_list_for_display(trades, players, team_names, season_to_league
     return out
 
 
-def resolve_asset_for_display(asset, players, team_names, season_to_league_id, league_id):
+def resolve_asset_for_display(
+    asset, players, team_names, season_to_league_id, league_id, seen_trades
+):
     name = resolve_asset_name(asset["asset_id"], players, team_names, season_to_league_id)
     to_team = resolve_team(league_id, asset.get("to_roster"), team_names)
     from_roster = asset.get("from_roster")
@@ -625,7 +666,7 @@ def resolve_asset_for_display(asset, players, team_names, season_to_league_id, l
         "from_team": from_team,
         "is_traced": asset.get("is_traced", False),
         "trades": resolve_trade_list_for_display(
-            asset.get("trades", []), players, team_names, season_to_league_id
+            asset.get("trades", []), players, team_names, season_to_league_id, seen_trades
         ),
         "drafted_as": None,
     }
@@ -644,7 +685,11 @@ def resolve_asset_for_display(asset, players, team_names, season_to_league_id, l
             "round": drafted.get("round"),
             "pick_no": drafted.get("pick_no"),
             "trades": resolve_trade_list_for_display(
-                drafted.get("trades", []), players, team_names, season_to_league_id
+                drafted.get("trades", []),
+                players,
+                team_names,
+                season_to_league_id,
+                seen_trades,
             ),
         }
 
@@ -652,12 +697,20 @@ def resolve_asset_for_display(asset, players, team_names, season_to_league_id, l
 
 
 def resolve_trade_tree_for_display(tree, players, team_names, season_to_league_id):
+    # The root trade is the one already "shown" via the header - seed
+    # the seen-set with it so nothing re-draws it as a hop further down.
+    seen_trades = {tree["trade_id"]}
     return {
         "trade_id": tree["trade_id"],
         "date": tree["date"],
         "assets": [
             resolve_asset_for_display(
-                asset, players, team_names, season_to_league_id, tree["league_id"]
+                asset,
+                players,
+                team_names,
+                season_to_league_id,
+                tree["league_id"],
+                seen_trades,
             )
             for asset in tree["assets"]
         ],

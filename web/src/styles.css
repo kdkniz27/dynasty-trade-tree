@@ -1,22 +1,30 @@
 :root {
-  --bg: #0c0e12;
-  --panel: #14171d;
-  --card: #191d25;
-  --border: #2a2f3a;
-  --line: #3a4152;
-  --text: #eceef2;
+  --bg: #0a0c10;
+  --bg-2: #12151c;
+  --panel: #12141a;
+  --card: #181c25;
+  --border: #262b36;
+  --line: #363c4a;
+  --text: #f0f2f6;
   --muted: #8b93a3;
   --accent: #5b8def;
-  --player: #4caf7d;
+  --accent-2: #f2c14e;
+  --player: #45b787;
   --pick: #d99a3d;
-  --drafted: #a56bf2;
+  --drafted: #b07cf5;
+
+  --font-body: "Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-display: "Teko", "Inter", sans-serif;
 }
 * { box-sizing: border-box; }
 html, body, #root { height: 100%; }
 body {
   margin: 0;
-  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: var(--bg);
+  font-family: var(--font-body);
+  background:
+    radial-gradient(1200px 600px at 15% -10%, rgba(91,141,239,0.08), transparent),
+    radial-gradient(900px 500px at 100% 0%, rgba(176,124,245,0.06), transparent),
+    var(--bg);
   color: var(--text);
 }
 
@@ -29,109 +37,131 @@ body {
   border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
-  background: var(--panel);
+  background: linear-gradient(180deg, var(--panel), var(--bg));
 }
-#sidebar-header { padding: 14px; border-bottom: 1px solid var(--border); }
-#sidebar-header h1 { font-size: 15px; margin: 0 0 6px 0; }
-#meta-line { font-size: 11px; color: var(--muted); margin-bottom: 10px; }
+#sidebar-header { padding: 18px 16px 14px 16px; border-bottom: 1px solid var(--border); }
+#sidebar-header h1 {
+  font-family: var(--font-display); font-size: 26px; font-weight: 600;
+  letter-spacing: 0.01em; margin: 0 0 2px 0; line-height: 1;
+  background: linear-gradient(90deg, #fff, #b9c2d6);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+#meta-line { font-size: 11px; color: var(--muted); margin-bottom: 12px; letter-spacing: 0.02em; }
 #search {
-  width: 100%; padding: 8px 10px; border-radius: 6px;
-  border: 1px solid var(--border); background: #0c0e12;
-  color: var(--text); font-size: 13px;
+  width: 100%; padding: 9px 12px; border-radius: 8px;
+  border: 1px solid var(--border); background: rgba(255,255,255,0.02);
+  color: var(--text); font-size: 13px; font-family: var(--font-body);
+  transition: border-color 0.15s ease, background 0.15s ease;
 }
+#search:focus { outline: none; border-color: var(--accent); background: rgba(91,141,239,0.06); }
+#search::placeholder { color: var(--muted); }
+
 #trade-list { overflow-y: auto; flex: 1; }
-.trade-item { padding: 10px 14px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.12s ease; }
-.trade-item:hover { background: #1e2330; }
-.trade-item.active { background: #1c2740; border-left: 3px solid var(--accent); }
-.trade-item .date { font-size: 11px; color: var(--muted); }
-.trade-item .summary { font-size: 13px; margin-top: 3px; }
-.no-results { padding: 20px 14px; color: var(--muted); font-size: 13px; }
+.trade-item {
+  padding: 11px 16px; border-bottom: 1px solid var(--border); cursor: pointer;
+  border-left: 3px solid transparent;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.trade-item:hover { background: rgba(255,255,255,0.03); }
+.trade-item.active { background: rgba(91,141,239,0.1); border-left-color: var(--accent); }
+.trade-item .date { font-size: 10.5px; color: var(--muted); letter-spacing: 0.03em; text-transform: uppercase; }
+.trade-item .summary { font-size: 13px; margin-top: 4px; line-height: 1.4; }
+.no-results { padding: 20px 16px; color: var(--muted); font-size: 13px; }
 
 /* ---------------- main / tree area ---------------- */
-#main { flex: 1; overflow: auto; padding: 30px 40px 80px 40px; }
+#main { flex: 1; overflow: auto; padding: 36px 40px 100px 40px; }
 #app-loading, #app-error, #placeholder {
   height: 100vh; display: flex; flex-direction: column; align-items: center;
   justify-content: center; color: var(--muted); font-size: 14px; text-align: center; padding: 20px;
 }
-#app-error { color: #e5566d; }
-#placeholder-title { font-size: 16px; color: var(--text); margin-bottom: 6px; }
+#app-error { color: #f0728a; }
+#placeholder-title { font-family: var(--font-display); font-size: 22px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
 #placeholder-sub { max-width: 360px; font-size: 13px; }
 
 .tree-wrap { animation: fadeIn 0.25s ease; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
 #tree-header { text-align: center; margin-bottom: 8px; }
-#tree-title { font-size: 20px; font-weight: 700; letter-spacing: 0.01em; }
-#tree-subtitle { font-size: 12px; color: var(--muted); margin-top: 2px; }
+#tree-title {
+  font-family: var(--font-display); font-size: 34px; font-weight: 600;
+  letter-spacing: 0.01em; line-height: 1;
+}
+#tree-subtitle { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
 #legend {
   display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
-  font-size: 11px; color: var(--muted); margin: 14px 0 6px 0;
-  padding-bottom: 14px; border-bottom: 1px solid var(--border);
+  font-size: 11px; color: var(--muted); margin: 16px 0 8px 0;
+  padding-bottom: 16px; border-bottom: 1px solid var(--border);
 }
 #legend span.key { display: inline-flex; align-items: center; gap: 5px; }
 #legend .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
 
-.title-stem { width: 2px; height: 22px; background: var(--line); margin: 0 auto; }
+.title-stem { width: 2px; height: 26px; background: linear-gradient(var(--border), var(--line)); margin: 0 auto; }
 
-/* Fan-out connector: shared by root branches AND internal forks.
-   Children must be ADJACENT (no flex gap) - the horizontal bar is
-   drawn as a segment across each child's own width, so spacing lives
-   INSIDE each child instead, which the bar spans. */
-.fanout { position: relative; display: flex; justify-content: center; flex-wrap: nowrap; padding-top: 28px; gap: 0; }
+/* Root/hop team split: the ONE place this tree still goes sideways -
+   a trade genuinely has two (or more) simultaneous sides, so those
+   sit side by side. Everything AFTER that point (the timeline) goes
+   straight down instead. Children must be ADJACENT (no flex gap) -
+   the horizontal bar is drawn as a segment across each child's own
+   width, so spacing lives INSIDE each child instead, which the bar
+   spans. */
+.fanout { position: relative; display: flex; justify-content: center; flex-wrap: wrap; padding-top: 30px; gap: 0; }
 .fanout::before {
   content: ''; position: absolute; top: 0; left: 50%;
-  width: 2px; height: 28px; background: var(--line); transform: translateX(-1px);
+  width: 2px; height: 30px; background: var(--line); transform: translateX(-1px);
 }
 .fanout.multi > * { position: relative; }
 .fanout.multi > *::before {
-  content: ''; position: absolute; top: -28px; left: 0; right: 0;
+  content: ''; position: absolute; top: -30px; left: 0; right: 0;
   height: 2px; background: var(--line);
 }
 .fanout.multi > *:first-child::before { left: 50%; }
 .fanout.multi > *:last-child::before { right: 50%; }
 .fanout.multi > *::after {
-  content: ''; position: absolute; top: -28px; left: 50%;
-  width: 2px; height: 28px; background: var(--line); transform: translateX(-1px);
+  content: ''; position: absolute; top: -30px; left: 50%;
+  width: 2px; height: 30px; background: var(--line); transform: translateX(-1px);
 }
-.fanout.multi > .branch,
-.fanout.multi > .hop-column { padding: 0 22px; }
+.fanout.multi > .branch { padding: 0 24px; margin-bottom: 10px; }
 
-.branch { display: flex; flex-direction: column; align-items: center; min-width: 230px; animation: fadeIn 0.2s ease; }
+.branch { display: flex; flex-direction: column; align-items: center; min-width: 240px; animation: fadeIn 0.2s ease; }
 .branch-header {
-  font-size: 13px; font-weight: 700; text-transform: uppercase;
-  letter-spacing: 0.04em; margin-bottom: 10px; padding: 4px 14px;
-  border-radius: 6px; border: 1px solid transparent;
+  font-family: var(--font-display); font-size: 17px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.03em; margin-bottom: 10px; padding: 4px 18px;
+  border-radius: 8px; border: 1px solid transparent;
 }
 
 .team-card {
-  background: rgba(255,255,255,0.02);
+  background: linear-gradient(165deg, rgba(255,255,255,0.035), rgba(255,255,255,0.01));
   border: 1px solid var(--border);
-  border-radius: 12px; padding: 10px;
-  display: flex; flex-direction: column; gap: 4px;
-  min-width: 230px;
-  transition: border-color 0.15s ease;
+  border-radius: 16px; padding: 13px;
+  display: flex; flex-direction: column; gap: 6px;
+  min-width: 240px; max-width: 340px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
+.team-card:hover { transform: translateY(-1px); }
 .section-label {
-  font-size: 9.5px; font-weight: 800; letter-spacing: 0.09em;
-  color: var(--muted); padding: 2px 2px 0 2px;
+  font-size: 9.5px; font-weight: 800; letter-spacing: 0.12em;
+  color: var(--muted); padding: 4px 3px 0 3px;
 }
 
 .asset-group-box {
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 10px; padding: 8px; display: flex;
-  flex-direction: column; gap: 5px; min-width: 200px;
+  border-radius: 11px; padding: 9px; display: flex;
+  flex-direction: column; gap: 6px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   transition: box-shadow 0.15s ease;
 }
-.asset-group-box:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.45); }
-.asset-group-box.muted { opacity: 0.62; background: transparent; }
+.asset-group-box:hover { box-shadow: 0 3px 10px rgba(0,0,0,0.45); }
+.asset-group-box.muted { opacity: 0.6; background: transparent; }
 
 .asset-row {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 9px; border-radius: 6px; font-size: 13px;
+  display: flex; align-items: center; gap: 9px;
+  padding: 7px 10px; border-radius: 7px; font-size: 13px;
   background: rgba(255,255,255,0.03);
+  transition: background 0.12s ease;
 }
+.asset-row:hover { background: rgba(255,255,255,0.055); }
 .asset-row.player { border-left: 3px solid var(--player); }
 .asset-row.draft_pick { border-left: 3px solid var(--pick); }
 .asset-icon { font-size: 13px; flex-shrink: 0; }
@@ -139,22 +169,38 @@ body {
 .asset-subtext { color: var(--muted); font-weight: 400; font-size: 11px; }
 .team-pill {
   display: inline-flex; align-items: center; gap: 4px;
-  padding: 2px 9px; border-radius: 10px; font-size: 10.5px;
-  font-weight: 700; white-space: nowrap;
+  padding: 2px 10px; border-radius: 10px; font-size: 10.5px;
+  font-weight: 700; white-space: nowrap; letter-spacing: 0.01em;
 }
 .team-pill-avatar { width: 14px; height: 14px; border-radius: 50%; }
 
-.frontier { display: flex; flex-direction: column; align-items: center; width: 100%; }
+/* ---------------- vertical timeline ----------------
+   Everything that happens AFTER a card - re-trades, draft
+   selections, whatever happened next - stacks straight down,
+   connected by a simple stem. This is the main fix for "too much
+   horizontal space, not enough vertical": depth now reads top to
+   bottom, and you scroll down to go further into the future instead
+   of the page sprawling sideways. */
+.timeline { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.timeline-item { display: flex; flex-direction: column; align-items: center; width: 100%; animation: fadeIn 0.2s ease; }
+.stem { width: 2px; height: 24px; background: linear-gradient(var(--border), var(--line)); flex-shrink: 0; }
 
-.hop-column { display: flex; flex-direction: column; align-items: center; animation: fadeIn 0.2s ease; }
+.hop-block {
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+  width: 100%; max-width: 580px;
+  border: 1px solid var(--border); border-radius: 18px;
+  padding: 4px 16px 18px 16px;
+  background: rgba(255,255,255,0.014);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+}
 .hop-label {
   display: inline-flex; align-items: center; gap: 8px;
   font-size: 11.5px; color: var(--muted);
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 20px; padding: 4px 12px; margin: 12px 0;
-  white-space: nowrap;
+  border-radius: 20px; padding: 6px 16px; margin: -15px 0 16px 0;
+  white-space: nowrap; box-shadow: 0 3px 8px rgba(0,0,0,0.35);
 }
-.hop-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.08em; color: var(--accent); }
+.hop-tag { font-size: 9.5px; font-weight: 800; letter-spacing: 0.09em; color: var(--accent-2); }
 .hop-label .hop-date { color: var(--text); font-weight: 700; }
 .hop-label .trade-id-pill {
   background: #1c2740; color: var(--accent);
@@ -164,31 +210,31 @@ body {
 
 .drafted-card {
   display: flex; flex-direction: column; align-items: center; gap: 1px;
-  background: rgba(165,107,242,0.10);
+  background: linear-gradient(165deg, rgba(176,124,245,0.16), rgba(176,124,245,0.04));
   border: 1px solid var(--drafted);
-  border-radius: 10px; padding: 10px 18px; margin-bottom: 4px;
-  min-width: 200px; box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  border-radius: 14px; padding: 13px 24px; margin-bottom: 4px;
+  min-width: 220px; box-shadow: 0 4px 14px rgba(176,124,245,0.12), 0 2px 6px rgba(0,0,0,0.3);
 }
-.drafted-card .drafted-tag { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.09em; color: var(--drafted); font-weight: 800; }
+.drafted-card .drafted-tag { font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--drafted); font-weight: 800; }
 .drafted-card .drafted-from { font-size: 11px; color: var(--text); font-weight: 600; margin-top: 4px; opacity: 0.85; }
 .drafted-card .drafted-detail { font-size: 11px; color: var(--muted); margin-top: 3px; }
 .drafted-card .drafted-by { font-size: 11.5px; font-weight: 700; margin-top: 1px; }
 .drafted-card .drafted-player {
-  font-size: 14px; font-weight: 700; margin-top: 5px;
-  padding-top: 6px; border-top: 1px solid rgba(165,107,242,0.3);
-  width: 100%; text-align: center;
+  font-family: var(--font-display); font-size: 20px; font-weight: 600; margin-top: 6px;
+  padding-top: 8px; border-top: 1px solid rgba(176,124,245,0.3);
+  width: 100%; text-align: center; letter-spacing: 0.01em;
 }
 
-.continuing-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin: 12px 0 2px 0; text-align: center; }
+.continuing-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--muted); margin: 14px 0 2px 0; text-align: center; }
 
 .hop-ref {
   font-size: 11px; color: var(--muted);
-  padding: 9px 12px; border: 1px dashed var(--border);
-  border-radius: 10px; max-width: 250px; text-align: center;
-  background: var(--card); margin-top: 12px;
+  padding: 11px 15px; border: 1px dashed var(--border);
+  border-radius: 12px; max-width: 380px; text-align: center;
+  background: var(--card);
 }
 .hop-ref-assets { color: var(--text); font-weight: 700; font-size: 12px; margin-bottom: 4px; }
-.hop-ref-body { font-style: italic; line-height: 1.5; }
+.hop-ref-body { font-style: italic; line-height: 1.55; }
 .hop-ref .trade-id-pill {
   background: #1c2740; color: var(--accent);
   border-radius: 4px; padding: 1px 5px; font-size: 10px;
@@ -198,5 +244,8 @@ body {
 @media (max-width: 780px) {
   #layout { flex-direction: column; height: auto; min-height: 100vh; }
   #sidebar { width: 100%; max-height: 40vh; border-right: none; border-bottom: 1px solid var(--border); }
-  #main { padding: 20px 14px 60px 14px; }
+  #main { padding: 24px 14px 70px 14px; }
+  #tree-title { font-size: 26px; }
+  .fanout.multi > .branch { padding: 0 8px; }
+  .hop-block { padding: 4px 8px 14px 8px; }
 }

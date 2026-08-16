@@ -3,11 +3,11 @@ import { colorForTeam } from '../lib/colors.js'
 import { AssetGroupBox, SectionLabel } from './Shared.jsx'
 import Frontier from './Frontier.jsx'
 
-// A team banner showing what that team RECEIVED and what it SENT in a
-// single trade, then whatever happens next to the assets it received.
-// Only received assets continue down the tree - the team no longer
-// holds what it sent away.
-export function TeamBranch({ team, receives, sends, renderedTrades }) {
+// A team banner showing what that team RECEIVED and what it SENT in
+// a single trade, then whatever happens next to the assets it
+// received. Only received assets continue down the tree - the team
+// no longer holds what it sent away.
+export function TeamBranch({ team, receives, sends }) {
   const color = colorForTeam(team)
 
   return (
@@ -39,7 +39,7 @@ export function TeamBranch({ team, receives, sends, renderedTrades }) {
         )}
       </div>
 
-      <Frontier assets={receives} renderedTrades={renderedTrades} />
+      <Frontier assets={receives} />
     </div>
   )
 }
@@ -47,7 +47,7 @@ export function TeamBranch({ team, receives, sends, renderedTrades }) {
 // Splits a set of traded assets into per-team views. A team appears if
 // it received OR sent anything in this trade, and each team's card
 // shows both sides.
-export default function TeamGroups({ assets, renderedTrades }) {
+export default function TeamGroups({ assets }) {
   const teams = []
   const seen = new Set()
   assets.forEach((a) => {
@@ -67,7 +67,6 @@ export default function TeamGroups({ assets, renderedTrades }) {
           team={team}
           receives={assets.filter((a) => a.to_team?.name === team)}
           sends={assets.filter((a) => a.from_team?.name === team)}
-          renderedTrades={renderedTrades}
         />
       ))}
     </div>
