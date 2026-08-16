@@ -1,14 +1,24 @@
 name: Deploy site
 
 # Builds the React/Vite frontend and publishes it to GitHub Pages -
-# free static hosting, no cold starts, no server to babysit. Runs on
-# every push to main, including the automatic commits made by
-# refresh-data.yml, so new trade data goes live automatically.
+# free static hosting, no cold starts, no server to babysit.
+#
+# Runs on every push to main you make yourself. It does NOT
+# automatically run just because refresh-data.yml pushed a commit -
+# GitHub deliberately suppresses push-triggered workflows when the
+# push was made with the default GITHUB_TOKEN (refresh-data.yml's own
+# commit), specifically to stop workflows from endlessly triggering
+# each other. The workflow_run trigger below is the correct way
+# around that: it fires whenever "Refresh trade data" finishes,
+# regardless of what token made its commit.
 
 on:
   push:
     branches: [main]
   workflow_dispatch: {}
+  workflow_run:
+    workflows: ["Refresh trade data"]
+    types: [completed]
 
 permissions:
   contents: read
@@ -21,9 +31,15 @@ concurrency:
 
 jobs:
   build:
+    # Skip if this was triggered by a "Refresh trade data" run that
+    # itself failed - nothing new to deploy. Direct pushes/manual runs
+    # (where github.event.workflow_run doesn't exist) are unaffected.
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.ref }}
 
       - uses: actions/setup-node@v4
         with:

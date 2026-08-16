@@ -38,6 +38,14 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const treeCache = useRef(new Map())
 
+  // Bumped on every league selection, even if it's the SAME league ID
+  // as before (e.g. retrying after the data wasn't ready yet). Without
+  // this, setLeagueId(id) with an unchanged value is a no-op to React
+  // (same string in, same string out), so the fetch effect below -
+  // keyed only on leagueId - would never re-run, leaving the screen
+  // stuck on "Loading trade history..." forever on a retry.
+  const [leagueRequestId, setLeagueRequestId] = useState(0)
+
   // Picking a league (from the home screen, or switching later) puts
   // it in the URL so the link is shareable, and clears anything tied
   // to whatever league was previously loaded.
@@ -49,6 +57,7 @@ export default function App() {
     setActiveTradeId(null)
     setActiveTree(null)
     setLeagueId(id)
+    setLeagueRequestId((n) => n + 1)
 
     const url = new URL(window.location.href)
     url.searchParams.set('league', id)
@@ -90,7 +99,7 @@ export default function App() {
       .catch((err) => {
         if (err.message !== 'not found') setIndexError(err.message)
       })
-  }, [leagueId])
+  }, [leagueId, leagueRequestId])
 
   // Keep the URL hash and selection in sync, so a specific tree is
   // shareable/bookmarkable.
