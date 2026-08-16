@@ -71,11 +71,18 @@ import requests
 # Config
 # ---------------------------------------------------------------------------
 
+
+# NOTE: GitHub Actions sets an env var to an EMPTY STRING (not absent)
+# whenever the ${{ vars.X }} it references doesn't exist as a repo
+# variable - so os.environ.get("KEY", fallback) never actually falls
+# back, since the key is always present, just sometimes empty. Chaining
+# with `or` instead correctly skips past anything empty/absent.
 LEAGUE_IDS = [
     lid.strip()
-    for lid in os.environ.get(
-        "SLEEPER_LEAGUE_IDS",
-        os.environ.get("SLEEPER_LEAGUE_ID") or "1312658766117744640",
+    for lid in (
+        os.environ.get("SLEEPER_LEAGUE_IDS")
+        or os.environ.get("SLEEPER_LEAGUE_ID")
+        or "1312658766117744640"
     ).split(",")
     if lid.strip()
 ]
