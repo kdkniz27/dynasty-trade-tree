@@ -1,8 +1,28 @@
 {
-  "generated_at": "2026-08-18T14:19:07.373939+00:00",
+  "generated_at": "2026-08-19T14:20:28.634187+00:00",
   "league_id": "1312658766117744640",
   "league_name": "THE Berg Dynasty League ",
   "trades": [
+    {
+      "trade_id": "1395663236073799680",
+      "date": "2026-08-19",
+      "season": "2026",
+      "summary": "Davante Adams, Josh Jacobs, 2027 Round 2 (BO Wetzel), 2027 Round 3 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "BO Wetzel"
+      ]
+    },
+    {
+      "trade_id": "1395461079366127616",
+      "date": "2026-08-18",
+      "season": "2026",
+      "summary": "",
+      "teams": [
+        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
+        "ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe"
+      ]
+    },
     {
       "trade_id": "1390093504331399168",
       "date": "2026-08-03",
