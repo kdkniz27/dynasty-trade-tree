@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-09T13:04:33.858647+00:00",
+  "generated_at": "2026-09-10T13:03:50.636781+00:00",
   "league_id": "1312658766117744640",
   "league_name": "THE Berg Dynasty League ",
   "trades": [
@@ -7,10 +7,10 @@
       "trade_id": "1395663236073799680",
       "date": "2026-08-19",
       "season": "2026",
-      "summary": "Davante Adams, Josh Jacobs, 2027 Round 2 (BO Wetzel), 2027 Round 3 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "summary": "Davante Adams, Josh Jacobs, 2027 Round 2 (BO Wetzel), 2027 Round 3 (This Team is Hopeless.)",
       "teams": [
-        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
-        "BO Wetzel"
+        "BO Wetzel",
+        "This Team is Hopeless."
       ]
     },
     {
@@ -19,8 +19,8 @@
       "season": "2026",
       "summary": "",
       "teams": [
-        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
-        "ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe"
+        "ShiitHereWeGoAgain!!!\ud83e\udd77\ud83c\udffe",
+        "This Team is Hopeless."
       ]
     },
     {
@@ -37,11 +37,11 @@
       "trade_id": "1388235165544775680",
       "date": "2026-07-29",
       "season": "2026",
-      "summary": "Brian Thomas, Kyle Monangai, Drake London, Christian Watson, 2027 Round 1 (Lisan Al-Caleb), 2027 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2027 Round 2 (Daniel Jones), 2029 Round 2 (Daniel Jones)",
+      "summary": "Brian Thomas, Kyle Monangai, Drake London, Christian Watson, 2027 Round 1 (Lisan Al-Caleb), 2027 Round 1 (This Team is Hopeless.), 2027 Round 2 (Daniel Jones), 2029 Round 2 (Daniel Jones)",
       "teams": [
-        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
         "Daniel Jones",
-        "Lisan Al-Caleb"
+        "Lisan Al-Caleb",
+        "This Team is Hopeless."
       ]
     },
     {
@@ -58,10 +58,10 @@
       "trade_id": "1387255599951011840",
       "date": "2026-07-26",
       "season": "2026",
-      "summary": "Ricky Pearsall, RJ Harvey, 2028 Round 3 (Lisan Al-Caleb), 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2027 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "summary": "Ricky Pearsall, RJ Harvey, 2028 Round 3 (Lisan Al-Caleb), 2026 Round 1 (This Team is Hopeless.), 2027 Round 2 (This Team is Hopeless.)",
       "teams": [
-        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
-        "Lisan Al-Caleb"
+        "Lisan Al-Caleb",
+        "This Team is Hopeless."
       ]
     },
     {
@@ -70,8 +70,8 @@
       "season": "2026",
       "summary": "Davante Adams, 2026 Round 1 (Lisan Al-Caleb)",
       "teams": [
-        "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
-        "Ground Zero"
+        "Ground Zero",
+        "This Team is Hopeless."
       ]
     },
     {
@@ -118,7 +118,7 @@
       "trade_id": "1289434124624338944",
       "date": "2025-10-30",
       "season": "2025",
-      "summary": "Matthew Stafford, Justin Herbert, 2027 Round 1 (Lisan Al-Caleb), 2028 Round 2 (Lisan Al-Caleb), 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2026 Round 1 (Revenge Tour)",
+      "summary": "Matthew Stafford, Justin Herbert, 2027 Round 1 (Lisan Al-Caleb), 2028 Round 2 (Lisan Al-Caleb), 2026 Round 1 (This Team is Hopeless.), 2026 Round 1 (Revenge Tour)",
       "teams": [
         "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
         "Ground Zero"
@@ -218,7 +218,7 @@
       "trade_id": "1222424140170940416",
       "date": "2025-04-28",
       "season": "2025",
-      "summary": "Keon Coleman, Tank Dell, 2025 Round 2 (NIX Sevennn), 2025 Round 3 (NIX Sevennn), 2026 Round 2 (BO Wetzel), 2027 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2025 Round 2 (Revenge Tour)",
+      "summary": "Keon Coleman, Tank Dell, 2025 Round 2 (NIX Sevennn), 2025 Round 3 (NIX Sevennn), 2026 Round 2 (BO Wetzel), 2027 Round 1 (This Team is Hopeless.), 2025 Round 2 (Revenge Tour)",
       "teams": [
         "Aftermath. \ud83d\ude45\u200d\u2642\ufe0f",
         "Chase \u2018n Chubby Boutte"
@@ -648,7 +648,7 @@
       "trade_id": "1031005879254081536",
       "date": "2023-11-16",
       "season": "2023",
-      "summary": "Matthew Stafford, 2026 Round 3 (Ground Zero), 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "summary": "Matthew Stafford, 2026 Round 3 (Ground Zero), 2026 Round 1 (This Team is Hopeless.)",
       "teams": [
         "Revenge tour",
         "TommyisBBCGangbangGirl"
@@ -708,7 +708,7 @@
       "trade_id": "1019749915624349696",
       "date": "2023-10-16",
       "season": "2023",
-      "summary": "Josh Allen, Jalen Hurts, 2025 Round 4 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2026 Round 2 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2024 Round 2 (Andy Dalton)",
+      "summary": "Josh Allen, Jalen Hurts, 2025 Round 4 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f), 2026 Round 2 (This Team is Hopeless.), 2024 Round 2 (Andy Dalton)",
       "teams": [
         "Christian Mingle",
         "Huge Sacks"
@@ -838,7 +838,7 @@
       "trade_id": "1010328360683188224",
       "date": "2023-09-20",
       "season": "2023",
-      "summary": "Stefon Diggs, Aaron Jones, Jerry Jeudy, 2026 Round 1 (Aftermath. \ud83d\ude45\u200d\u2642\ufe0f)",
+      "summary": "Stefon Diggs, Aaron Jones, Jerry Jeudy, 2026 Round 1 (This Team is Hopeless.)",
       "teams": [
         "Christian Mingle",
         "TommyisBBCGangbangGirl"
