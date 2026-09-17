@@ -1,8 +1,18 @@
 {
-  "generated_at": "2026-09-16T13:05:34.169405+00:00",
+  "generated_at": "2026-09-17T17:22:16.068992+00:00",
   "league_id": "1312658766117744640",
   "league_name": "THE Berg Dynasty League ",
   "trades": [
+    {
+      "trade_id": "1405962746821902336",
+      "date": "2026-09-16",
+      "season": "2026",
+      "summary": "Bucky Irving, Bhayshul Tuten, Saquon Barkley, Drake London, Dontayvion Wicks, Jaxon Smith-Njigba, 2028 Round 1 (Lisan Al-Caleb), 2027 Round 2 (This Team is Hopeless.)",
+      "teams": [
+        "Berg Blackout",
+        "Lisan Al-Caleb"
+      ]
+    },
     {
       "trade_id": "1395663236073799680",
       "date": "2026-08-19",
@@ -138,7 +148,7 @@
       "trade_id": "1286378459802664960",
       "date": "2025-10-21",
       "season": "2025",
-      "summary": "TreVeyon Henderson, Baker Mayfield, Chris Olave, Jahmyr Gibbs, 2026 Round 2 (Jaxon Jaxson Jackoffs)",
+      "summary": "TreVeyon Henderson, Baker Mayfield, Chris Olave, Jahmyr Gibbs, 2026 Round 2 (Berg Blackout)",
       "teams": [
         "Jaxon Jaxson Jackoffs",
         "NIX Sevennn"
@@ -148,7 +158,7 @@
       "trade_id": "1285619788202139648",
       "date": "2025-10-19",
       "season": "2025",
-      "summary": "TreVeyon Henderson, Baker Mayfield, Chris Olave, Jahmyr Gibbs, 2026 Round 2 (Jaxon Jaxson Jackoffs)",
+      "summary": "TreVeyon Henderson, Baker Mayfield, Chris Olave, Jahmyr Gibbs, 2026 Round 2 (Berg Blackout)",
       "teams": [
         "Jaxon Jaxson Jackoffs",
         "NIX Sevennn"
